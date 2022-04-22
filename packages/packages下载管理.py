@@ -97,13 +97,13 @@ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
  
 
-如果您到 pip 默认源的网络连接较差，临时使用本镜像站来升级 pip：
+如果您到 pip 默认源的网络连接较差，临时使用本镜像站来升级 pip：#1e1e1e#5a9abc
 
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
 
  
 
-利用pip安装python包遇到socket.timeout:The read operation timed out问题的解决方法
+#!利用pip安装python包遇到socket.timeout:The read operation timed out问题的解决方法
 
 一般是由于网速不稳定，下载过慢，超出默认时间，所以只要修改一下响应时间就好了。
 

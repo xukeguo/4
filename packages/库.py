@@ -1467,7 +1467,7 @@ class Foo(object):
         return inst
 
 
-    def __init__(self, price=50):#默认参数
+    def __init__(self, price=50):#?默认参数
         self.price = price
 
     def how_much_of_book(self, n):
@@ -1601,5 +1601,12 @@ class A(object):
         pass
 print type(A)
 
-结果：
-<type 'type'>
+#间隔执行
+import schedule
+import time
+def job ():
+ print('哈哈'）
+ schedule.every (3).seconds.do (job)
+while True:
+schedule.run_pending()
+time.sleep(1)
