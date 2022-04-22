@@ -1,5 +1,7 @@
 {
     "recommendations": [
-        "aaron-bond.better-comments"
+        "aaron-bond.better-comments",
+        "ms-ceintl.vscode-language-pack-zh-hans",
+        "etmoffat.pip-packages"
     ]
 }
