@@ -1198,8 +1198,8 @@ import uuid#uuid'''
     #import mymodule as mm
     #from mymodule import myfunc
 import os
-os.system('/System/Applications/Calculator.app/Contents/MacOS/Calculator')
-os.system('/Applications/WeChat.app/Contents/MacOS/WeChat')
+os.system('/System/Applications/Calculator.app/Contents/MacOS/Calculator')#打开系统计算器
+os.system('/Applications/WeChat.app/Contents/MacOS/WeChat')#微信
 os.getlogin()#返回当前登录用户名
 os.system('dir')
 os.aborter()#终止当前进程
@@ -1325,9 +1325,9 @@ for file in lis2:
 #os.path.expanduser()# 将path中包含的"~"和"~user"转换成用户目录
 #os.path.expandvars()# 将path中包含的"$name"转换成环境变量
 #os.path.isabs()# 如果path是绝对路径，返回true。否则返回false
+import os 
+a1=os.path.splitdrive('/System/Applications/Calculator.app/Contents/MacOS/Calculator')# 将path分割成目录和文件路径二元组返回
 
-a1=os.path.splitdrive('/Applications/WeChat.app/Contents/MacOS/WeChat')# 将path分割成目录和文件路径二元组返回
-print(a1)
 a2=os.path.splitext('/Applications/WeChat.app/Contents/MacOS/WeChat')# 将path分割成目录和扩展名两元组返回
 import os.path
 print (os.path.abspath( 'demol3.py'))# 返回path规范化的绝对路径

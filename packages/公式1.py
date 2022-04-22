@@ -815,6 +815,8 @@ while True:
     print(a.show())
     time.sleep(1)
     a.run()
+    if time.time()>=1570666799:
+        break
 # 微信群管理系统 
 class Wechat(object):
     def __init__(self,name):
