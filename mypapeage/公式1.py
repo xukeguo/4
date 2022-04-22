@@ -1383,7 +1383,7 @@ di={'a':1,'b':4,'c':3,'d':3}
 di1=(sorted(di.items(),key=lambda x:x[1],reverse=True))#按照value值进行排序
 di2=(sorted(di,key=lambda x:di[x],reverse=True))#按照key值进行排序
 print(di1)
-
+#排序赋值一
 a=3 
 b=2
 c=1
@@ -1410,7 +1410,7 @@ if c>e:
 if d>e:
     d,e=e,d
 print(a,b,c,d,e)
-
+#!排序赋值二
 a=3 
 b=2
 c=1
@@ -1418,7 +1418,7 @@ d=6
 e=5
 a,b,c,d,e={a,b,c,d,e}#解包赋值 变量个数必须和包内的键值对个数相同
 print(a,b,c,d,e)
-a,b,c,d,e=sorted([a,b,c,d,e],reverse=True)
+a,b,c,d,e=sorted([a,b,c,d,e],reverse=True)#!排序赋值三 置换赋值
 print(a,b,c,d,e)
 
 a=98764433
