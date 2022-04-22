@@ -1393,6 +1393,8 @@ print(a1, a2, a3, a4, a5, sep = "*") #sep可以设置分隔符
 print(a1, a2, a3, a4, a5, end = "\n") #end可以设置结束符
 
 
-
+a='wetwet'
+a1, a2, a3, a4, a5 ,a6= [ * a]
+print(a1, a2, a3, a4, a5, a6, sep = "*") #sep可以设置分隔符, 解开赋值
 
 

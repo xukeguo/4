@@ -1273,7 +1273,7 @@ class Meclass(object):
 p=Meclass()
 p.foo('hello')
         
-'''__new__的作用
+_new__的作用
 __new__方法的作用是，创建并返回一个实力对象，如果__new__只调用了一次，就会得到一个对象，继承自object的新式类才有new这一魔法方法
 注意事项
 __new__是在一个对象实例化的时候所调用的第一个方法
@@ -1282,7 +1282,7 @@ __new__决定是否要使用该__init__方法，因为__new__可调用其他类�
 在__new__方法中，不能调用自己的__new__方法，即：return cls.__new__(cls)，否则报错（Recursionerror：maximum recursion depth exceeded：超过最大递归深度）
 实例
 
-复制代码'''
+复制代码
 class Animal(object):
   
     def __init__(self):
@@ -1292,7 +1292,7 @@ class Animal(object):
         return super().__new__(cls,*args,**kwargs)
         #return object.__new__(cls,*args,**kwargs)
 tigger = Animal() #实例化过程中会自动调用__new__
-'''复制代码
+复制代码
 在新式类中__new__才是真正的实例化方法，为类提供外壳制造出实例框架，然后调用框架内的构造方法__init__进行操作
 
 我们可以将类比作制造商，__new__()方法就是前期的原材料购买环节，__init__()方法就是在有原材料的基础上，加工，初始化商品环节。
@@ -1303,56 +1303,7 @@ tigger = Animal() #实例化过程中会自动调用__new__
 
 如果希望在某个系统中，某个类只能出现一个实例的时候，那么这个单例对象就能满足要求
 
-复制代码'''
-class DatabaseClass(object):
-    def __new__(cls, *args, **kwargs):
-        # cls._instance=cls.__new__(cls) 不能使用自身的new方法
-        #容易造成一个深度递归，应该调用父类的new方法
-        if not hasattr(cls,'_instance'):#判断是否有_instance属性
-            cls._instance=super().__new__(cls, *args, **kwargs)###调用父类的new方法
-        return cls._instance
-
-    pass
-
-db1 = DatabaseClass()
-print(id(db1))
-
-db2 = DatabaseClass()
-print(id(db2))
-
-db3 = DatabaseClass()
-print(id(db3))
-'''_new__的作用
-__new__方法的作用是，创建并返回一个实力对象，如果__new__只调用了一次，就会得到一个对象，继承自object的新式类才有new这一魔法方法
-注意事项
-__new__是在一个对象实例化的时候所调用的第一个方法
-__new__至少必须要有一个参数cls，代表要实例化的类，此参数在实例化时由python解释器自动提供，其他的参数时用来直接传递给__init__方法
-__new__决定是否要使用该__init__方法，因为__new__可调用其他类的构造方法或者直接返回别的实力对象来作为本类的实例，如果__new__没有返回实例对象，则__init__不会被调用
-在__new__方法中，不能调用自己的__new__方法，即：return cls.__new__(cls)，否则报错（Recursionerror：maximum recursion depth exceeded：超过最大递归深度）
-实例
-
-复制代码'''
-class Animal(object):
-  
-    def __init__(self):
-        self.color = color
-    #如果不重写，__new__默认结构如下
-    def __new__(cls,*args,**kwargs):
-        return super().__new__(cls,*args,**kwargs)
-        #return object.__new__(cls,*args,**kwargs)
-tigger = Animal() #实例化过程中会自动调用__new__
-'''复制代码
-在新式类中__new__才是真正的实例化方法，为类提供外壳制造出实例框架，然后调用框架内的构造方法__init__进行操作
-
-我们可以将类比作制造商，__new__()方法就是前期的原材料购买环节，__init__()方法就是在有原材料的基础上，加工，初始化商品环节。
-
-单例模式
-
-是一种常用的软件设计模式，目的：确保某一个类只有一个实例存在
-
-如果希望在某个系统中，某个类只能出现一个实例的时候，那么这个单例对象就能满足要求
-
-复制代码'''
+复制代码
 class DatabaseClass(object):
     def __new__(cls, *args, **kwargs):
         # cls._instance=cls.__new__(cls) 不能使用自身的new方法
@@ -1371,12 +1322,12 @@ print(id(db2))
 
 db3 = DatabaseClass()
 print(id(db3))
-'''复制代码
+复制代码
  
 
 1、__new__方法默认返回实例对象供__init__方法、实例方法使用。
 
-复制代码'''
+复制代码
 class Foo(object):
     '''黄哥python培训，黄哥所写'''
     price = 50
@@ -1388,12 +1339,12 @@ class Foo(object):
 foo = Foo()
 print(foo.how_much_of_book(8))
 print(dir(Foo))
-'''复制代码
+复制代码
 分析上面的代码，这个类实例化过程，Foo类继承object类，继承了object的__new__方法。
 
 当你没有重写这个方法(通俗来说，你没有在Foo类中没有定义__new__方法)，Foo实例化是默认自动调用父类__new__方法，这个方法返回值为类的实例(self),提供这个函数how_much_of_book，默认的第一个参数self。
 
-复制代码'''
+复制代码
 class Foo(object):
     price = 50
 
@@ -1412,18 +1363,111 @@ print(foo.how_much_of_book(8))
 # <__main__.Foo object at 0x1006f2750>
 # <__main__.Foo object at 0x1006f2750>
 # 400
-'''复制代码
+_new__的作用
+__new__方法的作用是，创建并返回一个实力对象，如果__new__只调用了一次，就会得到一个对象，继承自object的新式类才有new这一魔法方法
+注意事项
+__new__是在一个对象实例化的时候所调用的第一个方法
+__new__至少必须要有一个参数cls，代表要实例化的类，此参数在实例化时由python解释器自动提供，其他的参数时用来直接传递给__init__方法
+__new__决定是否要使用该__init__方法，因为__new__可调用其他类的构造方法或者直接返回别的实力对象来作为本类的实例，如果__new__没有返回实例对象，则__init__不会被调用
+在__new__方法中，不能调用自己的__new__方法，即：return cls.__new__(cls)，否则报错（Recursionerror：maximum recursion depth exceeded：超过最大递归深度）
+实例
+
+复制代码
+class Animal(object):
+  
+    def __init__(self):
+        self.color = color
+    #如果不重写，__new__默认结构如下
+    def __new__(cls,*args,**kwargs):
+        return super().__new__(cls,*args,**kwargs)
+        #return object.__new__(cls,*args,**kwargs)
+tigger = Animal() #实例化过程中会自动调用__new__
+复制代码
+在新式类中__new__才是真正的实例化方法，为类提供外壳制造出实例框架，然后调用框架内的构造方法__init__进行操作
+
+我们可以将类比作制造商，__new__()方法就是前期的原材料购买环节，__init__()方法就是在有原材料的基础上，加工，初始化商品环节。
+
+单例模式
+
+是一种常用的软件设计模式，目的：确保某一个类只有一个实例存在
+
+如果希望在某个系统中，某个类只能出现一个实例的时候，那么这个单例对象就能满足要求
+
+复制代码
+class DatabaseClass(object):
+    def __new__(cls, *args, **kwargs):
+        # cls._instance=cls.__new__(cls) 不能使用自身的new方法
+        #容易造成一个深度递归，应该调用父类的new方法
+        if not hasattr(cls,'_instance'):
+            cls._instance=super().__new__(cls, *args, **kwargs)
+        return cls._instance
+
+    pass
+
+db1 = DatabaseClass()
+print(id(db1))
+
+db2 = DatabaseClass()
+print(id(db2))
+
+db3 = DatabaseClass()
+print(id(db3))
+复制代码
+ 
+
+1、__new__方法默认返回实例对象供__init__方法、实例方法使用。
+
+复制代码
+class Foo(object):
+    '''黄哥python培训，黄哥所写'''
+    price = 50
+
+    def how_much_of_book(self, n):
+        print(self)
+        return self.price * n
+
+foo = Foo()
+print(foo.how_much_of_book(8))
+print(dir(Foo))
+复制代码
+分析上面的代码，这个类实例化过程，Foo类继承object类，继承了object的__new__方法。
+
+当你没有重写这个方法(通俗来说，你没有在Foo类中没有定义__new__方法)，Foo实例化是默认自动调用父类__new__方法，这个方法返回值为类的实例(self),提供这个函数how_much_of_book，默认的第一个参数self。
+
+复制代码
+class Foo(object):
+    price = 50
+
+    def __new__(cls, *agrs, **kwds):
+        inst = object.__new__(cls, *agrs, **kwds)
+        print(inst)
+        return inst
+
+
+    def how_much_of_book(self, n):
+        print(self)
+        return self.price * n
+
+foo = Foo()
+print(foo.how_much_of_book(8))
+# <__main__.Foo object at 0x1006f2750>
+# <__main__.Foo object at 0x1006f2750>
+# 400
+复制代码
 请看上面代码，Foo类中重载了__new__方法，它的返回值为Foo类的实例对象。
 
 2、__init__ 方法为初始化方法，为类的实例提供一些属性或完成一些动作。
 
-复制代码'''
+复制代码
 class Foo(object):
 
-    
+    def __new__(cls, *agrs, **kwds):
+        inst = object.__new__(cls, *agrs, **kwds)
+        print(inst)
+        return inst
 
 
-    def __init__(self, price=40):
+    def __init__(self, price=50):#默认参数
         self.price = price
 
     def how_much_of_book(self, n):
@@ -1436,7 +1480,7 @@ print(foo.how_much_of_book(8))
 # <__main__.Foo object at 0x1006f2750>
 # <__main__.Foo object at 0x1006f2750>
 # 400
-'''复制代码
+复制代码
 3、__new__ 方法创建实例对象供__init__ 方法使用，__init__方法定制实例对象。
 
 __new__ 方法必须返回值，__init__方法不需要返回值。(如果返回非None值就报错)
@@ -1447,7 +1491,7 @@ __new__ 方法必须返回值，__init__方法不需要返回值。(如果返回
 
 __new__() is intended mainly to allow subclasses of immutable types (like int, str, or tuple) to customize instance creation. It is also commonly overridden in custom metaclasses in order to customize class creation.
 
-继承不可变数据类型时需要用到__new__方法(like int, str, or tuple） 。'''
+继承不可变数据类型时需要用到__new__方法(like int, str, or tuple） 。
 
 class Inch(float):
     "Convert from inch to meter"
@@ -1455,11 +1499,37 @@ class Inch(float):
         return float.__new__(cls, arg*0.0254)
 
 print(Inch(12))
-'''用在元类，定制创建类对象
+用在元类，定制创建类对象
 
-复制代码'''
+复制代码
+class MetaClass(type):
+
+    def __new__(meta, name, bases, dct):
+        print '-----------------------------------'
+        print "Allocating memory for class", name
+        print meta
+        print bases
+        print dct
+        return super(MetaClass, meta).__new__(meta, name, bases, dct)
+
+    def __init__(cls, name, bases, dct):
+        print '-----------------------------------'
+        print "Initializing class", name
+        print cls
+        print bases
+        print dct
+        super(MetaClass, cls).__init__(name, bases, dct)
 
 
+class Myclass(object):
+    __metaclass__ = MetaClass
+
+    def foo(self, param):
+        print param
+
+
+p = Myclass()
+p.foo("hello")
 
 # -----------------------------------
 # Allocating memory for class Myclass
@@ -1472,19 +1542,12 @@ print(Inch(12))
 # (<type 'object'>,)
 # {'__module__': '__main__', 'foo': <function foo at 0x1007f6500>, '__metaclass__': <class '__main__.MetaClass'>}
 # hello
-'''复制代码
+复制代码
  一个比较实际的例子，是在Django admin 表单验证的时候如何访问当前请求request。StackFlow的链接如下： http://stackoverflow.com/questions/1057252/how-do-i-access-the-request-object-or-any-other-variable-in-a-forms-clean-met/6062628#6062628
 
 首先想到的是把request也传递过去，在clean方法就可以使用了。
 
-复制代码'''
-#‘’一个比较实际的例子，是在Django admin 表单验证的时候如何访问当前请求request。StackFlow的链接如下： http://stackoverflow.com/questions/1057252/how-do-i-access-the-request-object-or-any-other-variable-in-a-forms-clean-met/6062628#6062628
-
-#首先想到的是把request也传递过去，在clean方法就可以使用了。’‘’
-
-#复制代码‘’‘
-from urllib import request
-from django import forms
+复制代码
 class MyForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop('request')
@@ -1493,15 +1556,17 @@ class MyForm(forms.ModelForm):
     def clean(self):
         #这里可以得到self.request的信息
         pass
+复制代码
+在平常的view用下面的代码调用：
 
 f = MyForm(request.POST, request=request)
-#但是在定制ModelAdmin的时候却不行，因为admin只提供get_form这个方法，返回值是类对象，而不是实例对象
+但是在定制ModelAdmin的时候却不行，因为admin只提供get_form这个方法，返回值是类对象，而不是实例对象
 
-    #get_form(self, request, *args, **kwargs):
+    get_form(self, request, *args, **kwargs):
         # 这行代码是错误的
         # return MyForm(request=request) 
-       # return MyForm     # OK
-#用__new__方法可以解决这个问题。
+        return MyForm     # OK
+用__new__方法可以解决这个问题。
 
 def get_form(self, request, *args, **kwargs):
     class ModelFormMetaClass(MyForm):
@@ -1512,50 +1577,9 @@ def get_form(self, request, *args, **kwargs):
 那么结果如何呢，add_view的调用代码如下：
 
 复制代码
-def add_view(self, request, form_url='', extra_context=None):
-'''    "The 'add' admin view for this model."
-    model = self.model
-    opts = model._meta
-
-    if not self.has_add_permission(request):
-        raise PermissionDenied
-
+def add_view(self, request, form_url='', extra_context=None)"
+    ...
     ModelForm = self.get_form(request)
-    formsets = []
-    if request.method == 'POST':
-        form = ModelForm(request.POST, request.FILES)
-        if form.is_valid():
-            new_object = self.save_form(request, form, change=False)
-            form_validated = True
-        else:
-            form_validated = False
-            new_object = self.model()
-        prefixes = {}
-        for FormSet, inline in zip(self.get_formsets(request), self.inline_instances):
-            prefix = FormSet.get_default_prefix()
-            prefixes[prefix] = prefixes.get(prefix, 0) + 1
-            if prefixes[prefix] != 1 or not prefix:
-                prefix = "%s-%s" % (prefix, prefixes[prefix])
-            formset = FormSet(data=request.POST, files=request.FILES,
-                              instance=new_object,
-                              save_as_new="_saveasnew" in request.POST,
-                              prefix=prefix, queryset=inline.queryset(request))
-            formsets.append(formset)
-        if all_valid(formsets) and form_validated:
-            self.save_model(request, new_object, form, change=False)
-            form.save_m2m()
-            for formset in formsets:
-                self.save_formset(request, form, formset, change=False)
-
-            self.log_addition(request, new_object)
-            return self.response_add(request, new_object)
-    else:
-        # Prepare the dict of initial data from the request.
-        # We have to special-case M2Ms as a list of comma-separated PKs.
-        initial = dict(request.GET.items())
-        for k in initial:
-            try:'''
-ModelForm = self.get_form(request)
     if request.method == 'POST':
         form = ModelForm(request.POST, request.FILES)
         #可以获取request参数
@@ -1564,8 +1588,8 @@ ModelForm = self.get_form(request)
             pass
         else:
             pass
-    else:''
-        #'''...（计算initial）'''
+    else:
+        ...（计算initial）
         form = ModelForm(initial=initial)
 复制代码
 分析：form = ModelFormMetaClass(request.POST, request.FILES)，按照通常的理解右边应该返回的是ModelFormMetaClass的一个实例，由于重写了__new__函数，没有调用父类函数，而是直接返回了一个带有request参数的MyForm实例，然后调用__init__函数，因此最后ModelFormMetaClass（）返回也是这个实例，而左边也需要的是MyForm的实例对象。因此__new__函数的作用是创建一个实例。
@@ -1578,18 +1602,4 @@ class A(object):
 print type(A)
 
 结果：
-<type 'type'>置对象或者类的基类型，object是所有类继承的基类，因此int、str、list、tuple等等这些内置的类，这些都是type类的实例对象。因为type也是类，因此type的基类也是object
-#废__new__的写法
-class person(object):
-    def __new__(cls,*args, **kwargs):
-        obj=object.__new__(cls)#super().__new__(cls)+1
-        return obj #返回的是一个实例对象，__init__才有机会被调用
-        
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
-    def name(self):
-        return self.name
-p1=person('zhangsan',18)
-print (p1.name)
-p2=person(p1)
+<type 'type'>
