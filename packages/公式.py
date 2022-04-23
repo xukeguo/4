@@ -45,20 +45,20 @@ def mydecwhitoct(x):
     else:
         return x%10+8*mydecwhitoct(x//10)
 print(mydecwhitoct(20))
-#6.编写一个程序，输入一个整数十进制表示，输出该整数的十六进制表示。 例如：输入：20，输出：14
+'''#6.编写一个程序，输入一个整数十进制表示，输出该整数的十六进制表示。 例如：输入：20，输出：14
 def myhex(x):
     if x==0:
         return 0
     else:
         return x%16+10*myhex(x//16)
-print(myhex(20))
+print(myhex(30))
 #7.编写一个程序，输入一个整数十六进制表示，输出该整数的十进制表示。 例如：输入：14，输出：20
 def mydecwithhex(x):
     if x==0:
         return 0
     else:
         return x%10+16*mydecwithhex(x//10)
-print(mydecwithhex(14))
+print(mydecwithhex(14))'''
 #4.第六题迭代求一元三次方程的根。 方程为：ax**3 + bx**2 + cx + d = 0,系数a,b,c,d由主函数输入。
 def solv():
     a=int(input("请输入系数a:"))
@@ -148,3 +148,11 @@ solv()
 #人脸识别
 #人脸识别是一种自然语言处理技术，它可以自动检测出人脸，并且可以自动检测出人脸的属性，如年龄、性别、颜色、脸型等。
 #人脸识别代码
+#抛物线和斜线交点坐标 列方程式 两边分别是  X的表达式，求解就可了
+
+def myhex(x):
+    if x==0:
+        return 0
+    else:
+        return 1+2*myhex(x//10)
+print(myhex(100))
