@@ -33,6 +33,7 @@ def main():
             break
         else:
             print('输入错误，请重新输入')
+main()
 def add_student():
      stu_list = []
      while True:
@@ -51,7 +52,7 @@ def add_student():
             try:      
                 engscore=int(input('请输入学生英语成绩：'))
                 mathscore=int(input('请输入学生数学成绩：'))
-                if engscore<0 or engscore>100 or mathscore<0 or mathscore>100:
+                if engscore<0 or engscore>100 or mathscore<0 or mathscore>120:
                     print('成绩不能为负数或大于100')
             except:
                 print('成绩必须为数字')
@@ -70,7 +71,7 @@ def save(lis):
         except:
            stu_txt=open('/Users/xkg/Desktop/student.txt','w',encoding='utf-8')
         for i in lis:
-               stu_txt.write(str(i)+'\n')
+               stu_txt.write(str(i)+'\n')#+'\n'什么意思？  字典转字符串 
         stu_txt.close()
 def find_student():
     stu_list=[]
@@ -97,8 +98,10 @@ def show_student():
     for i in stu_txt:
         stu_list.append(eval(i))
     stu_txt.close()
+    a=input('请输入查找姓名\n')
     for i in stu_list:
-        print('姓名：%s\n学号：%s\n年龄：%s\n英语成绩：%s\n数学成绩：%s'%(i['姓名'],i['学号'],i['年龄'],i['英语成绩'],i['数学成绩']))
+        if i['姓名']==a:
+         print('姓名：%s\n学号：%s\n年龄：%s\n英语成绩：%s\n数学成绩：%s'%(i['姓名'],i['学号'],i['年龄'],i['英语成绩'],i['数学成绩']))
 def count_student():
     stu_list=[]
     try:
