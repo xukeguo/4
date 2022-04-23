@@ -30,7 +30,7 @@ def mydecwhitbin(x):
         return 0
     else:
         return x%10+2*mydecwhitbin(x//10)#2*dec(x//10)是为了把每一位的值乘以2，然后再相加
-print(mydecwhitbin(101))
+print(mydecwhitbin(100))
 #输入一个整数，输出该整数的八进制表示。 例如：输入：16，输出：20
 def myoct(x):
     if x==0:
@@ -154,5 +154,5 @@ def myhex(x):
     if x==0:
         return 0
     else:
-        return 1+2*myhex(x//10)
-print(myhex(100))
+        return 3+40*myhex(x//10)
+print(myhex(11))
