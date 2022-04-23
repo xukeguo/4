@@ -33,9 +33,9 @@ def main():
             break
         else:
             print('输入错误，请重新输入')
-main()
+
 def add_student():
-     stu_list = []
+     stu_lista = []
      while True:
             name = input('请输入学生姓名：')
             if name == '':
@@ -59,12 +59,124 @@ def add_student():
                 continue
             #print('姓名：%s\n学号：%s\n年龄：%s\n英语成绩：%s\n数学成绩：%s'%(name,id,age,engscore,mathscore))录入字典
             stu_dict={'姓名':name,'学号':id,'年龄':age,'英语成绩':engscore,'数学成绩':mathscore}
-            stu_list.append(stu_dict)
+            stu_lista.append(stu_dict)
             answer=input ('是否继续录入？（y/n）\n')
             if answer == 'n':
                 break
-     save(stu_list)
+     save(stu_lista)
      print('录入成功')
+
+def find_student():
+    stu_listf=[]
+    try:
+        stu_txt=open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8')
+    except:
+        stu_txt=open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8')
+    for i in stu_txt:
+        stu_listf.append(eval(i))
+    stu_txt.close()
+    name=input('请输入查找学生姓名：')
+    for i in stu_listf:
+        if i['姓名']==name:
+            print('姓名：%s\n学号：%s\n年龄：%s\n英语成绩：%s\n数学成绩：%s'%(i['姓名'],i['学号'],i['年龄'],i['英语成绩'],i['数学成绩']))
+            break
+    else:
+        print('没有找到该学生')
+def show_student():
+    stu_lists=[]
+    try:
+        stu_txt=open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8')
+    except:
+        stu_txt=open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8')
+    for i in stu_txt:
+        stu_lists.append(eval(i))
+    stu_txt.close()
+    a=input('请输入查找姓名\n')
+    for i in stu_lists:
+        if i['姓名']==a:
+         print('姓名：%s\n学号：%s\n年龄：%s\n英语成绩：%s\n数学成绩：%s'%(i['姓名'],i['学号'],i['年龄'],i['英语成绩'],i['数学成绩']))
+def count_student():
+    stu_listc=[]
+    try:
+        stu_txt=open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8')
+    except:
+        stu_txt=open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8')
+    for i in stu_txt:
+        stu_listc.append(eval(i))
+    stu_txt.close()
+    print('学生总人数：%s'%len(stu_listc))
+def delete_student():
+    stu_listd=[]
+    try:
+        stu_txt=open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8')
+    except:
+        stu_txt=open('/Users/xkg/Desktop/student.txt','w',encoding='utf-8')
+    for i in stu_txt:
+        stu_listd.append(eval(i))
+    stu_txt.close()
+    name=input('请输入删除学生姓名：')
+    for i in stu_listd:
+        if i['姓名']==name:
+            stu_listd.remove(i)
+            break
+    else:
+        print('没有找到该学生')
+    save(stu_listd)
+    print('删除成功')
+def modify_student():
+    stu_listm=[]
+    try:
+        stu_txt=open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8')
+    except:
+        stu_txt=open('/Users/xkg/Desktop/student.txt','w',encoding='utf-8') 
+    for i in stu_txt:
+        stu_listm.append(eval(i))
+    stu_txt.close()
+    name=input('请输入修改学生姓名：')
+    for i in stu_listm:
+        if i['姓名']==name:
+            i['学号']=input('请输入学生学号：')
+            i['年龄']=input('请输入学生年龄：')
+            i['英语成绩']=input('请输入学生英语成绩：')
+            i['数学成绩']=input('请输入学生数学成绩：')
+            break
+    else:
+        print('没有找到该学生')
+    save(stu_listm)
+    print('修改成功')
+def update_student():
+    stu_listu=[]
+    try:
+        stu_txt=open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8')
+    except:
+        stu_txt=open('/Users/xkg/Desktop/student.txt','w',encoding='utf-8')
+    for i in stu_txt:
+        stu_listu.append(eval(i))
+    stu_txt.close()
+    name=input('请输入修改学生姓名：')
+    for i in stu_listu:
+        if i['姓名']==name:
+            i['学号']=input('请输入学生学号：')
+            i['年龄']=input('请输入学生年龄：')
+            i['英语成绩']=input('请输入学生英语成绩：')
+            i['数学成绩']=input('请输入学生数学成绩：')
+            break
+    else:
+        print('没有找到该学生')
+    save(stu_listu)
+    print('修改成功')
+def sort_student():
+    stu_lists=[]
+    try:
+        stu_txt=open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8')
+    except:
+        stu_txt=open('/Users/xkg/Desktop/student.txt','w',encoding='utf-8')
+    for i in stu_txt:
+        stu_lists.append(eval(i))
+    stu_txt.close()
+    stu_lists.sort(key=lambda x:x['姓名'])
+    save(stu_lists)
+    print('排序成功')
 def save(lis):
         try:
            stu_txt=open('/Users/xkg/Desktop/student.txt','a',encoding='utf-8')
@@ -73,118 +185,6 @@ def save(lis):
         for i in lis:
                stu_txt.write(str(i)+'\n')#+'\n'什么意思？  字典转字符串 
         stu_txt.close()
-def find_student():
-    stu_list=[]
-    try:
-        stu_txt=open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8')
-    except:
-        stu_txt=open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8')
-    for i in stu_txt:
-        stu_list.append(eval(i))
-    stu_txt.close()
-    name=input('请输入查找学生姓名：')
-    for i in stu_list:
-        if i['姓名']==name:
-            print('姓名：%s\n学号：%s\n年龄：%s\n英语成绩：%s\n数学成绩：%s'%(i['姓名'],i['学号'],i['年龄'],i['英语成绩'],i['数学成绩']))
-            break
-    else:
-        print('没有找到该学生')
-def show_student():
-    stu_list=[]
-    try:
-        stu_txt=open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8')
-    except:
-        stu_txt=open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8')
-    for i in stu_txt:
-        stu_list.append(eval(i))
-    stu_txt.close()
-    a=input('请输入查找姓名\n')
-    for i in stu_list:
-        if i['姓名']==a:
-         print('姓名：%s\n学号：%s\n年龄：%s\n英语成绩：%s\n数学成绩：%s'%(i['姓名'],i['学号'],i['年龄'],i['英语成绩'],i['数学成绩']))
-def count_student():
-    stu_list=[]
-    try:
-        stu_txt=open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8')
-    except:
-        stu_txt=open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8')
-    for i in stu_txt:
-        stu_list.append(eval(i))
-    stu_txt.close()
-    print('学生总人数：%s'%len(stu_list))
-def delete_student():
-    stu_list=[]
-    try:
-        stu_txt=open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8')
-    except:
-        stu_txt=open('/Users/xkg/Desktop/student.txt','w',encoding='utf-8')
-    for i in stu_txt:
-        stu_list.append(eval(i))
-    stu_txt.close()
-    name=input('请输入删除学生姓名：')
-    for i in stu_list:
-        if i['姓名']==name:
-            stu_list.remove(i)
-            break
-    else:
-        print('没有找到该学生')
-    save(stu_list)
-    print('删除成功')
-def modify_student():
-    stu_list=[]
-    try:
-        stu_txt=open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8')
-    except:
-        stu_txt=open('/Users/xkg/Desktop/student.txt','w',encoding='utf-8') 
-    for i in stu_txt:
-        stu_list.append(eval(i))
-    stu_txt.close()
-    name=input('请输入修改学生姓名：')
-    for i in stu_list:
-        if i['姓名']==name:
-            i['学号']=input('请输入学生学号：')
-            i['年龄']=input('请输入学生年龄：')
-            i['英语成绩']=input('请输入学生英语成绩：')
-            i['数学成绩']=input('请输入学生数学成绩：')
-            break
-    else:
-        print('没有找到该学生')
-    save(stu_list)
-    print('修改成功')
-def update_student():
-    stu_list=[]
-    try:
-        stu_txt=open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8')
-    except:
-        stu_txt=open('/Users/xkg/Desktop/student.txt','w',encoding='utf-8')
-    for i in stu_txt:
-        stu_list.append(eval(i))
-    stu_txt.close()
-    name=input('请输入修改学生姓名：')
-    for i in stu_list:
-        if i['姓名']==name:
-            i['学号']=input('请输入学生学号：')
-            i['年龄']=input('请输入学生年龄：')
-            i['英语成绩']=input('请输入学生英语成绩：')
-            i['数学成绩']=input('请输入学生数学成绩：')
-            break
-    else:
-        print('没有找到该学生')
-    save(stu_list)
-    print('修改成功')
-def sort_student():
-    stu_list=[]
-    try:
-        stu_txt=open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8')
-    except:
-        stu_txt=open('/Users/xkg/Desktop/student.txt','w',encoding='utf-8')
-    for i in stu_txt:
-        stu_list.append(eval(i))
-    stu_txt.close()
-    stu_list.sort(key=lambda x:x['姓名'])
-    save(stu_list)
-    print('排序成功')
 
 
-
-        
+main()
