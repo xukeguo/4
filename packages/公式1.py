@@ -1007,7 +1007,7 @@ def main():
     turtle.circle(10)
     turtle.done()
 main()
-from cmath import cos
+from cmath import cos#   引入复数 cmath   引入复数的cos  引入复数的sin 引入复数的tan  引入复数的exp  引入复数的log  引入复数的sqrt 引入复数的pow 引入复数的phase 引入复数的conjugate  引入复数的rect  引入复数的ascii  引入复数的hex  引入复数的oct  引入复数的isreal  引入复数的iscomplex  引入复数的real  引入复数的imag  引入复数的conjugate  引入复数的as_integer_ratio  引入复数的as_integer  引入复数的as_tuple  引入复数的is_integer  引入复数的is_real  引入复数的is_imaginary  引入复数的is_finite  引入复数的is_infinite  引入复数的is_nan  引入复数的is_number  引入复数的is_zero  引入复数的is_nonzero  引入复数的is_positive  引入复数的is_negative  引入复数的is_nonpositive  引入复数的is_nonnegative  引入复数的is_integer  引入复数的is_extended_real  引入复数的is_extended_imaginary  引入复数的is_extended_negative  引入复数的is_extended_nonnegative  引入复数的is_extended_positive  引入复数的is_extended_nonpositive  引入复数的is_extended_zero  引入复数的is_extended_nonzero  引入复数的is_extended_finite  引入 复数的is_extended_infinite  引入复数的is_extended_nan  引入复数的is_extended_number  引入复数的is_extended_real  引入复数的is_extended_imaginary  引入复数的is_extended_negative  引入复数的is_extended_nonnegative  引入复数的is_extended_positive  引入复数的is_extended_nonpositive  引入复数的is_extended_zero  引入复数的is_extended_nonzero  引入复数的is_extended_finite  引入复数的is_extended_infinite  引入复数的is_extended_nan  引入复数的is_extended_number  引入复数的is_extended_real  引入复数的is_extended_imaginary  引入复数的is_extended_negative  引入复数的is_extended_nonnegative  引入复数的is_extended_positive  引入复数的is_extended_nonpositive  引入复数的is_extended_zero  引入复数的is_extended_nonzero  引入复数的is_extended_finite  引入复数的is_extended_infinite  引入复数的is_extended_nan  引入复数的is_extended_number  引入复数的is_extended_real  引入复数的is_extended_imag  
 import datetime#时间模块
 def main():#
     print(datetime.datetime.now())#当前时间
