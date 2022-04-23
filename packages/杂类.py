@@ -349,7 +349,7 @@ else:
     
 #创建一个字典，存储学生信息，包括姓名、年龄、成绩，并且要求每个学生的信息都不能重复。
 dict={}
-while True:
+while True:#循环录入信息
     name = input("请输入姓名：")
     age = int(input("请输入年龄："))
     score = int(input("请输入成绩："))
