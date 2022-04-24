@@ -31,7 +31,7 @@ def main():
         elif choice == 5:
             delete_student()
         elif choice == 6:
-            update_student()
+            modify_student()
         elif choice == 7:
             sort_student()
         elif choice == 8:
@@ -79,6 +79,8 @@ def add_student():
      save(stu_lista)
      print('录入成功')
 def find_student():
+ import os
+ if os.path.exists ('/Users/xkg/Desktop/student.txt'):
     stu_listf=[]
     try:
         stu_txt=open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8')
@@ -94,6 +96,13 @@ def find_student():
             break
     else:
         print('没有找到该学生')
+    a=input('是否继续查找？（y/n）')
+    if a=='y':
+     find_student()
+    else:
+        print('感谢使用')
+ else:
+    print('没有找到该文件')
 def show_student():
     stu_lists=[]
     try:
@@ -136,30 +145,44 @@ def delete_student():
             break
     else:
         print('没有找到该学生')
+    a=input('是否继续删除？（y/n）')#删除多个学生
+    if a=='y':
+            delete_student()
 def modify_student():
     stu_listm=[]
     try:
         stu_txt=open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8')
     except:
-        stu_txt=open('/Users/xkg/Desktop/student.txt','w',encoding='utf-8') 
+        stu_txt=open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8') 
     for i in stu_txt:
         stu_listm.append(eval(i))
     stu_txt.close()
-    name=input('请输入修改学生姓名：')
-    for i in stu_listm:
-        if i['姓名']==name:
-            i['学号']=input('请输入学生学号：')
-            i['年龄']=input('请输入学生年龄：')
-            i['英语成绩']=input('请输入学生英语成绩：')
-            i['数学成绩']=input('请输入学生数学成绩：')
-            break
-    else:
-        print('没有找到该学生')
-    file2=open('/Users/xkg/Desktop/student.txt','w',encoding='utf-8')
-    for i in stu_listm:
-        file2.write(str(i)+'\n')
-    file2.close()
-    print('修改成功')
+    while True:
+        name=input('请输入修改学生姓名：')
+        for i in stu_listm:
+            if i['姓名']==name: 
+             while True:
+              try:
+                engscore=int(input('请输入英语成绩：'))
+                mathscore=int(input('请输入数学成绩：'))
+                id=input('请输入学号：')
+                break
+              except:
+                print('成绩必须为数字')
+                continue
+             i['英语成绩']=engscore
+             i['数学成绩']=mathscore
+             i['学号']=id
+             with open('/Users/xkg/Desktop/student.txt','w',encoding='utf-8') as file1:
+                for i in stu_listm:
+                    file1.write(str(i)+'\n')
+                print('修改成功')
+                break    
+        else:
+            print('没有找到该学生') 
+        a=input('是否继续修改？（y/n）')
+        if a!='y':
+         break 
 def update_student():
     stu_listu=[]
     try:

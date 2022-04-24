@@ -583,6 +583,8 @@ def my_password(password_a=0):
             global   password_b
             password_b=1#用于判断是否需要核对密码
             password_a==1#打卡标记专用
+            flag=1 #标记为1，退出循环地flag=1标记专用
+            flag=True
             global  globalpassword
             globalpassword=password
             return globalpassword
