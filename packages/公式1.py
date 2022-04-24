@@ -597,11 +597,11 @@ my_password(password_a=0)
 print(globalpassword)
 #try...except...else...finally
 import traceback
-try:
+try:#try...except...else...finally的使用方法   可以捕获异常 可以捕获异常后执行else 可以捕获异常后执行finally  
     a=int(input('请输入一个数字:'))
     b=int(input('请输入一个数字:'))
     print(a/b)
-except ZeroDivisionError:
+except ZeroDivisionError:#捕获除数为0的异常  
     print('除数不能为0')
 except ValueError:
     print('输入的不是数字')

@@ -1398,3 +1398,14 @@ a1, a2, a3, a4, a5 ,a6= [ * a]
 print(a1, a2, a3, a4, a5, a6, sep = "*") #sep可以设置分隔符, 解开赋值
 
 
+try:        
+    a=int(input('请输入一个数字：'))
+    b=int(input('请输入一个数字：'))
+    try:
+        c=a/b
+        print(c)
+    except ZeroDivisionError:
+        print('除数不能为0')
+    
+except ValueError:
+    print('输入的数字不合法')

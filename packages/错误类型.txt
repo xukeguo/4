@@ -1,0 +1,88 @@
+
+    import tkinter#!计算时间差#间隔执行
+except ImportError:
+    import Tkinter as tkinter
+
+try:
+        import ttk#
+        py3 = False
+except ImportError:
+        import tkinter.ttk as ttk
+        py3 = True
+try:        
+    a=int(input('请输入一个数字：'))
+    b=int(input('请输入一个数字：'))
+    try :
+      if b!=0:
+         c=a/b
+         print(c)
+    except not bool(b==0):
+        print('除数不能为0')
+    else:
+        print('除数不能为0')
+except ValueError:
+    print('输入的数字不合法')
+      
+
+except ValueError:  #ValueError  异常类型  异常名称  异常信息 异常跟踪  异常堆栈 异常属性  异常对象   
+    print('请输入数字')
+except Exception as e:
+    print(e)
+
+#有哪些异常类型 
+#2.TypeError#类型错误
+#3.IndexError#索引错误
+#4.KeyError#键错误
+#5.NameError#名称错误
+#6.AttributeError#属性错误
+#7.SyntaxError#语法错误
+#8.OSError#操作系统错误
+#9.ImportError#导入错误
+#10.ZeroDivisionError#除0错误
+#11.ArithmeticError#算术错误
+#12.AssertionError#断言错误
+#13.AttributeError#属性错误
+#14.EOFError#文件结束错误
+#15.FloatingPointError#浮点数错误
+#16.ImportError#导入错误
+#17.IndentationError#缩进错误
+#18.IndexError#索引错误
+#19.KeyError#键错误
+#20.KeyboardInterrupt#键盘中断错误
+#21.MemoryError#内存错误
+#22.NameError#名称错误
+#23.OverflowError#溢出错误
+#24.ReferenceError#引用错误
+#25.RuntimeError#运行时错误
+#26.StopIteration#迭代停止错误
+#27.SyntaxError#语法错误
+#28.SystemError#系统错误
+#29.SystemExit#系统退出错误
+#30.TabError#制表错误
+#31.UnboundLocalError#未绑定本地错误
+#32.UnicodeError#Unicode错误
+#33.UnicodeEncodeError#Unicode编码错误
+#35.UnicodeTranslateError#Unicode转换错误
+#36.ValueError#值错误
+#38.BlockingIOError#阻塞IO错误
+#39.BrokenPipeError#管道错误
+#40.ChildProcessError#子进程错误
+#41.ConnectionAbortedError#连接中断错误
+#42.ConnectionError#连接错误
+#43.ConnectionRefusedError#连接拒绝错误
+#44.ConnectionResetError#连接重置错误
+#45.FileExistsError#文件存在错误
+#47.InterruptedError#中断错误
+#48.IsADirectoryError#是目录错误
+#49.NotADirectoryError#不是目录错误
+#50.PermissionError#权限错误
+#52.TimeoutError# 超时错误
+#53.RecursionError #递归错误
+#54.StopAsyncIteration #停止异步迭代错误
+#55.TimeoutError #超时错误
+#56.FileNotFoundError   #文件未找到错误
+#57.PermissionError #权限错误
+#58.ProcessLookupError #进程查找错误
+#try...except...else...finally
+import traceback
+try:#try...except...else...finally的使用方法   可以捕获异

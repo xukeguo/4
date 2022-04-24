@@ -14,26 +14,31 @@ def main():
         print('\t\t\t\t\t 6.修改学生信息')
         print('\t\t\t\t\t 7.排序')
         print('\t\t\t\t\t 8.退出系统')
-        num = int(input('请输入您的选择：'))
-        if num == 1:
+        print('\t\t\t\t\t请选择（1-8）：')
+        try:
+            choice=int(input())
+        except:
+            print('请输入数字！')
+            continue
+        if choice == 1:
             add_student()
-        elif num == 2:
+        elif choice == 2:
             find_student()
-        elif num == 3:
+        elif choice == 3:
             show_student()
-        elif num == 4:
+        elif choice == 4:
             count_student()
-        elif num == 5:
+        elif choice == 5:
             delete_student()
-        elif num == 6:
+        elif choice == 6:
             update_student()
-        elif num == 7:
+        elif choice == 7:
             sort_student()
-        elif num == 8:
+        elif choice == 8:
+            print('感谢使用！')
             break
         else:
-            print('输入错误，请重新输入')
-
+            print('请输入正确的数字！')
 def add_student():
      stu_lista = []
      while True:
@@ -52,6 +57,9 @@ def add_student():
             try:      
                 engscore=int(input('请输入学生英语成绩：'))
                 mathscore=int(input('请输入学生数学成绩：'))
+                if engscore<0 or engscore>100 or mathscore<0 or mathscore>100:
+                 print('成绩必须在0-100之间')
+                 continue
                
             except ValueError:# 判断输入的是否是数字
                 print('成绩必须为数字!')
@@ -59,9 +67,7 @@ def add_student():
             except TypeError:   # 判断输入的是否是数字 
                 print('成绩必须为数字')
                 continue
-            if engscore<0 or engscore>100 or mathscore<0 or mathscore>100:
-                print('成绩必须在0-100之间')
-                continue
+          
                 
                 
             #print('姓名：%s\n学号：%s\n年龄：%s\n英语成绩：%s\n数学成绩：%s'%(name,id,age,engscore,mathscore))录入字典
@@ -72,7 +78,6 @@ def add_student():
                 break
      save(stu_lista)
      print('录入成功')
-
 def find_student():
     stu_listf=[]
     try:
@@ -98,10 +103,8 @@ def show_student():
     for i in stu_txt:
         stu_lists.append(eval(i))
     stu_txt.close()
-    a=input('请输入查找姓名\n')
     for i in stu_lists:
-        if i['姓名']==a:
-         print('姓名：%s\n学号：%s\n年龄：%s\n英语成绩：%s\n数学成绩：%s'%(i['姓名'],i['学号'],i['年龄'],i['英语成绩'],i['数学成绩']))
+         print('姓名：%s\t学号：%s\t年龄：%s\t英语成绩：%s\t数学成绩：%s'%(i['姓名'],i['学号'],i['年龄'],i['英语成绩'],i['数学成绩']))
 def count_student():
     stu_listc=[]
     try:
@@ -125,15 +128,13 @@ def delete_student():
     for i in stu_listd:
         if i['姓名']==name:
             stu_listd.remove(i)
+            with open('/Users/xkg/Desktop/student.txt','w',encoding='utf-8') as file1:
+                for i in stu_listd:
+                    file1.write(str(i)+'\n')
+            print('删除成功')
             break
     else:
         print('没有找到该学生')
-    file1=open('/Users/xkg/Desktop/student.txt','w',encoding='utf-8')
-    for i in stu_listd:
-        file1.write(str(i)+'\n')
-    file1.close()
-    print('删除成功')
-
 def modify_student():
     stu_listm=[]
     try:
@@ -153,7 +154,10 @@ def modify_student():
             break
     else:
         print('没有找到该学生')
-    save(stu_listm)
+    file2=open('/Users/xkg/Desktop/student.txt','w',encoding='utf-8')
+    for i in stu_listm:
+        file2.write(str(i)+'\n')
+    file2.close()
     print('修改成功')
 def update_student():
     stu_listu=[]
@@ -174,7 +178,10 @@ def update_student():
             break
     else:
         print('没有找到该学生')
-    save(stu_listu)
+    file3=open('/Users/xkg/Desktop/student.txt','w',encoding='utf-8')
+    for i in stu_listu:
+        file3.write(str(i)+'\n')
+    file3.close()
     print('修改成功')
 def sort_student():
     stu_lists=[]
@@ -185,9 +192,25 @@ def sort_student():
     for i in stu_txt:
         stu_lists.append(eval(i))#将文件中的字符串转换成字典
     stu_txt.close()
-    stu_lists.sort(key=lambda x:x['姓名'])
-    save(stu_lists)
-    print('排序成功')
+    try:
+        num1=int(input('请输入排序方式：1.按学号排序；2.按年龄排序；3.按英语成绩排序；4.按数学成绩排序'))
+    except:
+        print('输入错误，请重新输入')
+    if num1==1:
+        stu_lists.sort(key=lambda x:x['学号'])
+    elif num1==2:
+        stu_lists.sort(key=lambda x:x['年龄'],reverse=True)
+    elif num1==3:
+        stu_lists.sort(key=lambda x:x['英语成绩'],reverse=True)
+    elif num1==4:
+        stu_lists.sort(key=lambda x:x['数学成绩'])
+    else:
+        print('输入错误，请重新输入，返主菜单层')
+    file4=open('/Users/xkg/Desktop/student.txt','w',encoding='utf-8')
+    for i in stu_lists:
+        file4.write(str(i)+'\n')
+    file4.close()
+    print('排序成功,请在显示学生信息查看')
 def save(lis):
         try:
            stu_txt=open('/Users/xkg/Desktop/student.txt','a',encoding='utf-8')#追加
