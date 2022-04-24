@@ -61,7 +61,7 @@ def show_student():
     with open('/Users/xkg/Desktop/student2.txt','r') as f:
         for line in f:
             student = eval(line)
-            print('学生信息：%s 年龄：%d 成绩：%d'%(student['name'],student['age'],student['score']))
+            print('学生姓名：%s 年龄：%d 成绩：%d'%(student['name'],student['age'],student['score']))
 def count_student():
     count = 0
     with open('/Users/xkg/Desktop/student2.txt','r') as f:
@@ -99,9 +99,31 @@ def sort_student():
         for line in f:
             student = eval(line)
             students.append(student)
-    students.sort(key=lambda x:x['score'],reverse=True)
-    print(students)
+    a=input(  '请输入排序方式：1.按姓名排序 2.按成绩排序 3.按年龄排序')
+    if a=='1':
+        students.sort(key=lambda x:x['name'])
+        with open('/Users/xkg/Desktop/student2.txt','w') as f:
+            for student in students:
+                f.write(str(student)+'\n')
+        print('按姓名排序完成，返回主菜单查看')
+    elif a=='2':
+        students.sort(key=lambda x:x['score'])
+        with open('/Users/xkg/Desktop/student2.txt','w') as f:
+            for student in students:
+                f.write(str(student)+'\n')
+        print('按成绩排序完成，返回主菜单查看')
+    elif a=='3':
+        students.sort(key=lambda x:x['age'])
+        print('按年龄排序完成，返回主菜单查看')
+        with open('/Users/xkg/Desktop/student2.txt','w') as f:
+            for student in students:
+                f.write(str(student)+'\n')
+    else:
+        print('输入错误，请重新输入')
+
 if __name__ == '__main__':
     main()
 #!/usr/bin/env python3
-# Path: 2/学生信息管理系统.py
+# Path: 2/学生信息管理系统.py1
+# Created by 孙震 on 2019/10/12.
+    

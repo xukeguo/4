@@ -103,6 +103,7 @@ def show_student():
     for i in stu_txt:
         stu_lists.append(eval(i))
     stu_txt.close()
+    #print (stu_lists[0]['姓名'])如果要显示最大或最小值，可以先排序再显示第一个索引
     for i in stu_lists:
          print('姓名：%s\t学号：%s\t年龄：%s\t英语成绩：%s\t数学成绩：%s'%(i['姓名'],i['学号'],i['年龄'],i['英语成绩'],i['数学成绩']))
 def count_student():
