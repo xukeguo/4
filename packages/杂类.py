@@ -2627,7 +2627,9 @@ print('{}的年龄是{},成绩是{}'.format(name,age,score))
 print('{0}的年龄是{1},成绩是{2}'.format(name,age,score))
 print('{name}的年龄是{age},成绩是{score}'.format(name=name,age=age,score=score))
 print(f'{name}的年龄是{age},成绩是{score}')
-print('{0:>10}的年龄是{1:>10.3f},成绩是{2:>10}'.format(name,age,score))
+print('{0:>10}的年龄是{1:>10.3f},成绩是{2:>10}'.format(name,age,score))#
+format_tit1e='{:6}\t{:12}\t{:8}\t{:10}\t{:10}At{:8}'#格式化标题
+print(format_tit1e.format('ID','姓名','英语成绩','Python成绩','Java成绩','总成绩'))
 
  
 

@@ -564,7 +564,8 @@ print(str2)#abc|defg
 str1.join(list) #将list中的每个元素替换成str1
 str1.encode(encoding='utf-8',errors='strict') #将字符串转换成字节码
 str1.decode(encoding='utf-8',errors='strict') #将字节码转换成字符串
-str1.format(a,b,c) #格式化字符串
+str1.format(a,b,c) #格式化字符串    参数为元组  可以指定参数的位置  如果参数不足，则用空格补齐   如果参数多余，则抛出异常
+str1.format_map(dict) #格式化字符串    参数为字典  可以指定参数的名称  如果参数不足，则用空格补齐   如果参数多余，则抛出异常
 str1.zfill(width) #将字符串填充为指定长度，不足的在左边填充0
 str1.center(width) #将字符串填充为指定长度，不足的在中间填充空格
 str1.ljust(width) #将字符串填充为指定长度，不足的在左边填充空格

@@ -3,6 +3,9 @@
 #@Time    :   2022/04/23 21:54:16
 #@Author  :   flow-laic 
 #@Email   :
+from multiprocessing.connection import answer_challenge
+
+
 def main():
     print('\t\t\t\t\t学生信息管理系统')
     while True:
@@ -80,29 +83,77 @@ def add_student():
      print('录入成功')
 def find_student():
  import os
+ stu_listf=[]
  if os.path.exists ('/Users/xkg/Desktop/student.txt'):
-    stu_listf=[]
-    try:
-        stu_txt=open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8')
-    except:
-        stu_txt=open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8')
-    for i in stu_txt:
-        stu_listf.append(eval(i))#eval()函数将字符串转换为字典
-    stu_txt.close()
-    name=input('请输入查找学生姓名：')
-    for i in stu_listf:
-        if i['姓名']==name:
-            print('姓名：%s\n学号：%s\n年龄：%s\n英语成绩：%s\n数学成绩：%s'%(i['姓名'],i['学号'],i['年龄'],i['英语成绩'],i['数学成绩']))
-            break
-    else:
-        print('没有找到该学生')
-    a=input('是否继续查找？（y/n）')
-    if a=='y':
-     find_student()
-    else:
-        print('感谢使用')
- else:
-    print('没有找到该文件')
+        a=int(input('请输入1：按学号查找\n2：按姓名查找\n3：按年龄查找\n4：按英语成绩查找\n5：按数学成绩查找\n'))
+        if a==1:
+            b=input('请输入学生学号：')
+            with open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8') as stu_txt:
+                for i in stu_txt:
+                    dict_stu=eval(i)
+                    if b==dict_stu['学号']:
+                        stu_listf.append(dict_stu)
+                        print('{:^6}\t{:^6}\t{:^6}\t{:^6}\t{:^6}\t{:^6}'.format('姓名','学号','年龄','英语成绩','数学成绩','总分'))
+                        print('{:^6}\t{:^6}\t{:^6}\t{:^6}\t\t{:^6}\t\t\t\t\t{:^6}'.format(dict_stu['姓名'],dict_stu['学号'],dict_stu['年龄'],dict_stu['英语成绩'],dict_stu['数学成绩'],int(dict_stu['英语成绩'])+int(dict_stu['数学成绩'])))
+                        break
+                else:
+                    print('没有找到！')
+        elif a==2:
+            b=input('请输入学生姓名：')
+            with open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8') as stu_txt:
+                for i in stu_txt:
+                    dict_stu=eval(i)
+                    if b==dict_stu['姓名']:
+                        stu_listf.append(dict_stu)
+                        print('{:^6}\t{:^6}\t{:^6}\t{:^6}\t{:^6}\t{:^6}'.format('姓名','学号','年龄','英语成绩','数学成绩','总分'))
+                        print('{:^6}\t{:^6}\t{:^6}\t{:^6}\t{:^6}\t{:^6}'.format(dict_stu['姓名'],dict_stu['学号'],dict_stu['年龄'],dict_stu['英语成绩'],dict_stu['数学成绩'],int(dict_stu['英语成绩'])+int(dict_stu['数学成绩'])))
+                        break
+                else:
+                    print('没有找到！')
+
+        elif a==3:
+            b=input('请输入学生年龄：')
+            with open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8') as stu_txt:
+                for i in stu_txt:
+                    dict_stu=eval(i)
+                    if b==dict_stu['年龄']:
+                        stu_listf.append(dict_stu)
+                        print('{:^6}\t{:^6}\t{:^6}\t{:^6}\t{:^6}\t{:^6}'.format('姓名','学号','年龄','英语成绩','数学成绩','总分'))
+                        print('{:^6}\t{:^6}\t{:^6}\t{:^6}\t{:^6}\t{:^6}'.format(dict_stu['姓名'],dict_stu['学号'],dict_stu['年龄'],dict_stu['英语成绩'],dict_stu['数学成绩'],int(dict_stu['英语成绩'])+int(dict_stu['数学成绩'])))
+                        break
+                else:
+                    print('没有找到！')
+                        
+        elif a==4:
+            b=int(input('请输入学生英语成绩：'))
+            with open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8') as stu_txt:
+                for i in stu_txt:
+                    dict_stu=eval(i)
+                    if b==dict_stu['英语成绩']:
+                        stu_listf.append(dict_stu)
+                        print('{:^6}\t{:^6}\t{:^6}\t{:^6}\t{:^6}\t{:^6}'.format('姓名','学号','年龄','英语成绩','数学成绩','总分'))
+                        print('{:^6}\t{:^6}\t{:^6}\t{:^6}\t{:^6}\t{:^6}'.format(dict_stu['姓名'],dict_stu['学号'],dict_stu['年龄'],dict_stu['英语成绩'],dict_stu['数学成绩'],int(dict_stu['英语成绩'])+int(dict_stu['数学成绩'])))
+                        break
+                else:
+                    print('没有找到！')
+        elif a==5:
+            b=int(input('请输入学生数学成绩：'))
+            with open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8') as stu_txt:
+                for i in stu_txt:
+                    dict_stu=eval(i)
+                    if b==dict_stu['数学成绩']:
+                        stu_listf.append(dict_stu)
+                        print('{:^6}\t{:^6}\t{:^6}\t{:^6}\t{:^6}\t{:^6}'.format('姓名','学号','年龄','英语成绩','数学成绩','总分'))
+                        print('{:^6}\t{:^6}\t{:^6}\t{:^6}\t{:^6}\t{:^6}'.format(dict_stu['姓名'],dict_stu['学号'],dict_stu['年龄'],dict_stu['英语成绩'],dict_stu['数学成绩'],int(dict_stu['英语成绩'])+int(dict_stu['数学成绩'])))
+                        break
+                else:
+                    print('没有找到！')
+        else:
+            print('输入错误！')
+        answer=input('是否继续查询？（y/n）')
+ if answer=='n':
+    return stu_listf
+ return find_student()
 def show_student():
     stu_lists=[]
     try:
