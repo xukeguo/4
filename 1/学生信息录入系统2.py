@@ -52,11 +52,18 @@ def add_student():
             try:      
                 engscore=int(input('请输入学生英语成绩：'))
                 mathscore=int(input('请输入学生数学成绩：'))
-                if engscore<0 or engscore>100 or mathscore<0 or mathscore>120:
-                    print('成绩不能为负数或大于100')
-            except:
+               
+            except ValueError:# 判断输入的是否是数字
+                print('成绩必须为数字!')
+                continue
+            except TypeError:   # 判断输入的是否是数字 
                 print('成绩必须为数字')
                 continue
+            if engscore<0 or engscore>100 or mathscore<0 or mathscore>100:
+                print('成绩必须在0-100之间')
+                continue
+                
+                
             #print('姓名：%s\n学号：%s\n年龄：%s\n英语成绩：%s\n数学成绩：%s'%(name,id,age,engscore,mathscore))录入字典
             stu_dict={'姓名':name,'学号':id,'年龄':age,'英语成绩':engscore,'数学成绩':mathscore}
             stu_lista.append(stu_dict)
@@ -73,7 +80,7 @@ def find_student():
     except:
         stu_txt=open('/Users/xkg/Desktop/student.txt','r',encoding='utf-8')
     for i in stu_txt:
-        stu_listf.append(eval(i))
+        stu_listf.append(eval(i))#eval()函数将字符串转换为字典
     stu_txt.close()
     name=input('请输入查找学生姓名：')
     for i in stu_listf:
@@ -121,8 +128,12 @@ def delete_student():
             break
     else:
         print('没有找到该学生')
-    save(stu_listd)
+    file1=open('/Users/xkg/Desktop/student.txt','w',encoding='utf-8')
+    for i in stu_listd:
+        file1.write(str(i)+'\n')
+    file1.close()
     print('删除成功')
+
 def modify_student():
     stu_listm=[]
     try:
@@ -172,14 +183,14 @@ def sort_student():
     except:
         stu_txt=open('/Users/xkg/Desktop/student.txt','w',encoding='utf-8')
     for i in stu_txt:
-        stu_lists.append(eval(i))
+        stu_lists.append(eval(i))#将文件中的字符串转换成字典
     stu_txt.close()
     stu_lists.sort(key=lambda x:x['姓名'])
     save(stu_lists)
     print('排序成功')
 def save(lis):
         try:
-           stu_txt=open('/Users/xkg/Desktop/student.txt','a',encoding='utf-8')
+           stu_txt=open('/Users/xkg/Desktop/student.txt','a',encoding='utf-8')#追加
         except:
            stu_txt=open('/Users/xkg/Desktop/student.txt','w',encoding='utf-8')
         for i in lis:
