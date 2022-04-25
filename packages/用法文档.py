@@ -1409,3 +1409,34 @@ try:
     
 except ValueError:
     print('输入的数字不合法')
+#command键加上shift键可以换行 
+#ctrl+alt+f10 可以跳转到某个函数
+#ctrl+alt+f11 可以跳转到某个类
+#ctrl+alt+f12 可以跳转到某个方法
+#ctrl+alt+f9 可以跳转到某个变量
+#ctrl+alt+f8 可以跳转到某个类的某个方法
+#ctrl+alt+f7 可以跳转到某个类的某个变量
+#ctrl+alt+f6 可以跳转到某个类的某个方法
+#ctrl+alt+f5 可以跳转到某个类的某个变量
+#ctrl+alt+f4 可以跳转到某个类的某个方法
+#ctrl+alt+f3 可以跳转到某个类的某个变量
+#ctrl+alt+f2 可以跳转到某个类的某个方法
+#ctrl+alt+f1 可以跳转到某个类的某个变量
+#ctrl+alt+f0 可以跳转到某个类的某个方法
+#ctrl+alt+f 可以跳转到某个类的某个变量
+#ctrl+alt+e 可以跳转到某个类的某个方法
+#ctrl+alt+d 可以跳转到某个类的某个变量
+#ctrl+alt+c 可以跳转到某个类的某个方法
+#ctrl+alt+b 可以跳转到某个类的某个变量
+#ctrl+alt+a 可以跳转到某个类的某个方法
+#ctrl+alt+z 可以跳转到某个类的某个变量
+#ctrl+alt+y 可以跳转到某个类的某个方法
+#ctrl+alt+x 可以跳转到某个类的某个变量
+#ctrl+alt+w 可以跳转到某个类的某个方法
+#ctrl+alt+v 可以跳转到某个类的某个变量
+#control+alt+s 可以跳转到某个类的某个方法
+#control+alt+r 可以跳转到某个类的某个变量
+#control+alt+q 可以跳转到某个类的某个方法
+#command+alt+鼠标左键 可以跳转到某个类的某个变量
+#command+alt+鼠标右键 可以跳转到某个类的某个方法
+#command+鼠标左键 可以跳转到某个类的某个变量
