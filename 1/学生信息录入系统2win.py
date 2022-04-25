@@ -344,7 +344,8 @@ def sort_student():
        for i in stu_lists:
            file4.write(str(i)+'\n')
        file4.close()
-       print('排序成功,请在显示学生信息查看')
+       print('排序成功,请在显示学生信息查看')  
+
     else:
            print('没有学生信息！')
 def save(lis):
@@ -357,5 +358,6 @@ def save(lis):
         stu_txt.close()
 
 
-main()
+main()  
 
+         
