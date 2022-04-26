@@ -927,6 +927,9 @@ b=open('/Users/xkg/Documents/GitHub/-1/1/pageage/test1.txt','a+')
 b.write(a.read())#写入
 a.close()
 b.close()
+stu_txt=open('j:/12/test1.txt','a')#追加 windows也用/
+
+stu_txt=open('C:/Users/xukeg/Desktop/student1.txt','a')#追加c: 可以默认 其他盘的不行
 #read()
 a=open('/Users/xkg/Documents/GitHub/-1/1/pageage/test.txt','a+')
 print(a.read())#读取
