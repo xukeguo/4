@@ -1176,26 +1176,21 @@ import urllib#url
 import django#django#django.core.management.base#django.core.management.base
 import uuid#uuid'''
 #用户自定义模块   #import mymodule as mm
-#用户片段  #from mymodule import myfunc
-'''"HEADER":{
-		"prefix": "header",
-		"body": [
-		// "#!/usr/bin/env python",
-		//  欢迎使用Python脚本编辑器！我的一小步，人类一大步！
-	//  请在下面编辑你的脚本，按Ctrl+Enter键保存，按Ctrl+S键保存并运行，按Ctrl+R键重新运行，按Ctrl+Q键退出。
-	//  请在下面输入您的代码：header
-	//  您可以使用以下指令来访问Python脚本编辑器的帮助：
-	//  help()
-	//  如果您需要更多的帮助，请访问Python官方网站：
-	//  https://docs.python.org/zh-cn/3/
-	//  您可以使用以下指令来访问Python脚本编辑器的帮助：
+#用户片段  #在设置settings下的sinppets下python.json中添加(open seings 空格)
+{
+
+"BODY":{
+	"prefix": "twz",
+	"body": [
 		"#欢迎使用Python脚本编辑器！我的一小步，人类一大步！",
 		"#@File    :   $TM_FILENAME",
 		"#@Time    :   $CURRENT_YEAR/$CURRENT_MONTH/$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
-		"#@Author  :   flow-laic ",		
-		"#@Email   :"
-	],'''
-     
+		"#@Author  :   flow-laic ",	
+
+	],
+	
+},
+}
  #import mymodule as mm
     #from mymodule import myfunc
     #import mymodule as mm

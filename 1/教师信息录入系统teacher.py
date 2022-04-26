@@ -1,5 +1,5 @@
 # 欢迎使用Python脚本编辑器！我的一小步，人类一大步！
-# @File    :   学生信息录入系统2.py
+# @File    :   教师信息录入系统2.py
 # @Time    :   2022/04/23 21:54:16
 # @Author  :   flow-laic
 # @Email   :
@@ -8,14 +8,14 @@
 
 
 def main():
-    print('{:^76}'.format('学生信息管理系统'))
+    print('{:^76}'.format('教师信息管理系统'))
     while True:
-        print('{:^76}'.format('1.添加学生信息') )    # !添加学生信息"\t\t\t\t\t\"表示空格
-        print('{:^76}'.format(' 2.查找学生信息'))
-        print('{:^76}'.format(' 3.显示学生信息'))
-        print('{:^76}'.format(' 4.统计学生总人数'))
-        print('{:^76}'.format(' 5.删除学生信息'))
-        print('{:^76}'.format(' 6.修改学生信息'))
+        print('{:^76}'.format('1.添加教师信息') )    # !添加教师信息"\t\t\t\t\t\"表示空格
+        print('{:^76}'.format(' 2.查找教师信息'))
+        print('{:^76}'.format(' 3.显示教师信息'))
+        print('{:^76}'.format(' 4.统计教师总人数'))
+        print('{:^76}'.format(' 5.删除教师信息'))
+        print('{:^76}'.format(' 6.修改教师信息'))
         print('{:^76}'.format('  7.排序      '))
         print('              \t\t\t  8.退出系统') 
         print('{:^76}'.format('   请选择（1-8）：'))
@@ -47,17 +47,17 @@ def add_teacher():
      stu_lista = []
      while True:
             try:
-                name = input('请输入学生姓名：')
+                name = input('请输入教师姓名：')
                 if name == '':
                     print('姓名不能为空，请重新输入')
                     break
-                id = input('请输入学生学号：')
+                id = input('请输入教师学号：')
                 if id == '':
                     print('学号不能为空，请重新输入')
                     break
-                age = int(input('请输入学生年龄：'))
-                engscore = int(input('请输入学生英语成绩：'))
-                mathscore = int(input('请输入学生数学成绩：'))
+                age = int(input('请输入教师年龄：'))
+                engscore = int(input('请输入教师英语成绩：'))
+                mathscore = int(input('请输入教师数学成绩：'))
                 if engscore < 0 or engscore > 100 or mathscore < 0 or mathscore > 100:
                  print('成绩必须在0-100之间')
                  continue
@@ -88,7 +88,7 @@ def find_teacher():
                     a = int(input('请输入1：按学号查找\n2：按姓名查找\n3：按年龄查找\n4：按英语成绩查找\n5：按数学成绩查找\n'))#输入查找方式
             
                     if a == 1:
-                        b = input('请输入学生学号：')
+                        b = input('请输入教师学号：')
                         with open('C:teacher.txt', 'r', encoding='utf-8') as stu_txt:
                             for i in stu_txt:
                                 dict_stu = eval(i)
@@ -102,7 +102,7 @@ def find_teacher():
                             else:
                                 print('没有找到！')
                     elif a == 2:
-                        b = input('请输入学生姓名：')
+                        b = input('请输入教师姓名：')
                         with open('C:teacher.txt', 'r', encoding='utf-8') as stu_txt:
                             for i in stu_txt:
                                 dict_stu = eval(i)
@@ -117,7 +117,7 @@ def find_teacher():
                                 print('没有找到！')
             
                     elif a == 3:
-                        b = int(input('请输入学生年龄：'))
+                        b = int(input('请输入教师年龄：'))
                         with open('C:teacher.txt', 'r', encoding='utf-8') as stu_txt:
                             for i in stu_txt:
                                 dict_stu = eval(i)
@@ -133,7 +133,7 @@ def find_teacher():
             
                     elif a == 4:
                         try:
-                            b = int(input('请输入学生英语成绩：'))
+                            b = int(input('请输入教师英语成绩：'))
                             with open('C:teacher.txt', 'r', encoding='utf-8') as stu_txt:
                                 for i in stu_txt:
                                     dict_stu = eval(i)
@@ -150,7 +150,7 @@ def find_teacher():
                             print('输入错误！')
                     elif a == 5:
                         try:
-                            b = int(input('请输入学生数学成绩：'))
+                            b = int(input('请输入教师数学成绩：'))
                             with open('C:teacher.txt', 'r', encoding='utf-8') as stu_txt:
                                 for i in stu_txt:
                                     dict_stu = eval(i)
@@ -175,7 +175,7 @@ def find_teacher():
                 else:
                       continue
        else:
-           print('还没有学生信息！')
+           print('还没有教师信息！')
 def show_teacher():
     import os
     if os.path.exists('C:teacher.txt'):
@@ -192,7 +192,7 @@ def show_teacher():
        for i in stu_lists:
             print('姓名：%s\t学号：%s\t年龄：%s\t英语成绩：%s\t数学成绩：%s'%(i['姓名'],i['学号'],i['年龄'],i['英语成绩'],i['数学成绩']))
     else:
-           print('没有学生信息！')
+           print('没有教师信息！')
 def count_teacher():
     import os
     if os.path.exists('C:teacher.txt'):
@@ -205,9 +205,9 @@ def count_teacher():
        for i in stu_txt:
            stu_listc.append(eval(i))
        stu_txt.close()
-       print('学生总人数：%s'%len(stu_listc))
+       print('教师总人数：%s'%len(stu_listc))
     else:
-              print('没有学生信息！')
+              print('没有教师信息！')
 def delete_teacher():
       import os
       if os.path.exists('C:teacher.txt'):
@@ -221,7 +221,7 @@ def delete_teacher():
              stu_listd.append(eval(i))
          stu_txt.close()
          while True:
-                    name=input('请输入删除学生姓名：')
+                    name=input('请输入删除教师姓名：')
                     for i in stu_listd:
                         if i['姓名']==name:
                             stu_listd.remove(i)
@@ -231,8 +231,8 @@ def delete_teacher():
                             print('删除成功')
                             break
                     else:
-                        print('没有找到该学生')
-                    a=input('是否继续删除？（y/n）')#删除多个学生
+                        print('没有找到该教师')
+                    a=input('是否继续删除？（y/n）')#删除多个教师
                     if a!='y':
                         break
       else:
@@ -249,14 +249,14 @@ def modify_teacher():
            stu_listm.append(eval(i))
        stu_txt.close()
        while True:
-           name=input('请输入修改学生姓名：')
+           name=input('请输入修改教师姓名：')
            for i in stu_listm:
                if i['姓名']==name: 
                    print('姓名\t学号\t年龄\t英语成绩\t数学成绩')
                    print('{:<4}\t{:<4}\t{:<4}\t{:<4}\t{:<4}'.format(i['姓名'],i['学号'],i['年龄'],i['英语成绩'],i['数学成绩']))
                    while True:
                        try:
-                           num=int(input('请输入要修改的学生信息：1.学号 2.年龄 3.英语成绩 4.数学成绩'))
+                           num=int(input('请输入要修改的教师信息：1.学号 2.年龄 3.英语成绩 4.数学成绩'))
                            if num==1:
                                i['学号']=input('请输入学号：')
                            elif num==2:
@@ -279,12 +279,12 @@ def modify_teacher():
                             print('修改成功')
                             break
            else:
-                print('没有找到该学生')
-           a=input('是否继续修改其他学生？（y/n）')
+                print('没有找到该教师')
+           a=input('是否继续修改其他教师？（y/n）')
            if a!='y':
                     break
     else:
-            print('没有学生信息！')
+            print('没有教师信息！')
 def update_teacher():
  import os
  if os.path.exists('C:teacher.txt'):
@@ -297,16 +297,16 @@ def update_teacher():
     for i in stu_txt:
         stu_listu.append(eval(i))
     stu_txt.close()
-    name=input('请输入修改学生姓名：')
+    name=input('请输入修改教师姓名：')
     for i in stu_listu:
         if i['姓名']==name:
-            i['学号']=input('请输入学生学号：')
-            i['年龄']=input('请输入学生年龄：')
-            i['英语成绩']=input('请输入学生英语成绩：')
-            i['数学成绩']=input('请输入学生数学成绩：')
+            i['学号']=input('请输入教师学号：')
+            i['年龄']=input('请输入教师年龄：')
+            i['英语成绩']=input('请输入教师英语成绩：')
+            i['数学成绩']=input('请输入教师数学成绩：')
             break
     else:
-        print('没有找到该学生')
+        print('没有找到该教师')
     file3=open('C:teacher.txt','w',encoding='utf-8')
     for i in stu_listu:
         file3.write(str(i)+'\n')
@@ -367,10 +367,10 @@ def sort_teacher():
        for i in stu_lists:
            file4.write(str(i)+'\n')
        file4.close()
-       print('排序成功,请在显示学生信息查看')  
+       print('排序成功,请在显示教师信息查看')  
 
     else:
-           print('没有学生信息！')
+           print('没有教师信息！')
 def save(lis):
         try:
            stu_txt=open('C:teacher.txt','a',encoding='utf-8')#追加
