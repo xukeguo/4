@@ -330,13 +330,37 @@ def sort_student():
        except:
            print('输入错误，请重新输入')
        if num1==1:
-           stu_lists.sort(key=lambda x:x['学号'],reverse=True)
+              a1=input('请输入排序方式：1.升序；2.降序')
+              if a1=='1':
+                 stu_lists.sort(key=lambda x:x['学号'])
+              elif a1=='2':
+                 stu_lists.sort(key=lambda x:x['学号'],reverse=True)
+              else:
+                    print('输入错误，请重新输入')
        elif num1==2:
-           stu_lists.sort(key=lambda x:x['年龄'],reverse=True)
+                a2=input('请输入排序方式：1.升序；2.降序')
+                if a2=='1':
+                     stu_lists.sort(key=lambda x:x['年龄'])
+                elif a2=='2':
+                    stu_lists.sort(key=lambda x:x['年龄'],reverse=True)
+                else:
+                    print('输入错误，请重新输入')
        elif num1==3:
-           stu_lists.sort(key=lambda x:x['英语成绩'],reverse=True)
+                a3=input('请输入排序方式：1.升序；2.降序')
+                if a3=='1':
+                     stu_lists.sort(key=lambda x:x['英语成绩'],)
+                elif a3=='2':
+                    stu_lists.sort(key=lambda x:x['英语成绩'],reverse=True)
+                else:
+                    print('输入错误，请重新输入')
        elif num1==4:
-           stu_lists.sort(key=lambda x:x['数学成绩'])
+                a4=input('请输入排序方式：1.升序；2.降序')
+                if a4=='1':
+                     stu_lists.sort(key=lambda x:x['数学成绩'])
+                elif a4=='2':
+                    stu_lists.sort(key=lambda x:x['数学成绩'],reverse=True)
+                else:
+                    print('输入错误，请重新输入')
        else:
            print('输入错误，请重新输入，返主菜单层')
            return
@@ -356,8 +380,11 @@ def save(lis):
         for i in lis:
                stu_txt.write(str(i)+'\n')#+'\n'什么意思？  字典转字符串 
         stu_txt.close()
+        
 
 
-main()  
+
+
+main()        
 
          
