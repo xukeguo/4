@@ -161,4 +161,5 @@ tensorflow2.2.0的安装成功后如果导入出现问题，那一般是没有�
 ————————————————
 版权声明：本文为CSDN博主「班斌」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
 原文链接：https://blog.csdn.net/qq_41605884/article/details/117756586'''
- #CMD下 pip install pyinstaller 打包可执行文件模块    可以把python文件打包成可执行文件     
+ #CMD下 pip install pyinstaller 打包可执行文件模块    可以把python文件打包成可执行文件 
+ # pyinstaller -F -w -i icon.ico main.py#可以指定图标  可以指定窗口大小  可以指定窗口标题  可以指定窗口图标  可以指定窗口位置            
