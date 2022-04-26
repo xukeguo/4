@@ -79,7 +79,7 @@ def add_student():
 def find_student():
        import os
        stu_listf = []
-       if os.path.exists('C:student.txt'):
+       if os.path.exists('student.txt'):
            flag= 1
            while flag<100:
                 flag+=1
@@ -88,7 +88,7 @@ def find_student():
             
                     if a == 1:
                         b = input('请输入学生学号：')
-                        with open('C:student.txt', 'r', encoding='utf-8') as stu_txt:
+                        with open('student.txt', 'r', encoding='utf-8') as stu_txt:
                             for i in stu_txt:
                                 dict_stu = eval(i)
                                 if b == dict_stu['学号']:
@@ -102,7 +102,7 @@ def find_student():
                                 print('没有找到！')
                     elif a == 2:
                         b = input('请输入学生姓名：')
-                        with open('C:student.txt', 'r', encoding='utf-8') as stu_txt:
+                        with open('student.txt', 'r', encoding='utf-8') as stu_txt:
                             for i in stu_txt:
                                 dict_stu = eval(i)
                                 if b == dict_stu['姓名']:
@@ -117,7 +117,7 @@ def find_student():
             
                     elif a == 3:
                         b = int(input('请输入学生年龄：'))
-                        with open('C:student.txt', 'r', encoding='utf-8') as stu_txt:
+                        with open('student.txt', 'r', encoding='utf-8') as stu_txt:
                             for i in stu_txt:
                                 dict_stu = eval(i)
                                 if b == dict_stu['年龄']:
@@ -133,7 +133,7 @@ def find_student():
                     elif a == 4:
                         try:
                             b = int(input('请输入学生英语成绩：'))
-                            with open('C:student.txt', 'r', encoding='utf-8') as stu_txt:
+                            with open('student.txt', 'r', encoding='utf-8') as stu_txt:
                                 for i in stu_txt:
                                     dict_stu = eval(i)
                                     if b == dict_stu['英语成绩']:
@@ -150,7 +150,7 @@ def find_student():
                     elif a == 5:
                         try:
                             b = int(input('请输入学生数学成绩：'))
-                            with open('C:student.txt', 'r', encoding='utf-8') as stu_txt:
+                            with open('student.txt', 'r', encoding='utf-8') as stu_txt:
                                 for i in stu_txt:
                                     dict_stu = eval(i)
                                     if b == dict_stu['数学成绩']:
@@ -177,30 +177,31 @@ def find_student():
            print('还没有学生信息！')
 def show_student():
     import os
-    if os.path.exists('C:student.txt'):
+    if os.path.exists('student.txt'):
        
        stu_lists=[]
        try:
-           stu_txt=open('C:student.txt','r',encoding='utf-8')
+           stu_txt=open('student.txt','r',encoding='utf-8')
        except:
-           stu_txt=open('C:student.txt','r',encoding='utf-8')
+           stu_txt=open('student.txt','r',encoding='utf-8')
        for i in stu_txt:
            stu_lists.append(eval(i))
        stu_txt.close()
        # print (stu_lists[0]['姓名'])如果要显示最大或最小值，可以先排序再显示第一个索引
+       print('{:<4}\t{:<4}\t{:<4}\t{:<4}\t{:<4}\t{:<4}'.format( '姓名', '学号', '年龄', '英语成绩', '数学成绩', '总分'))
        for i in stu_lists:
-            print('姓名：%s\t学号：%s\t年龄：%s\t英语成绩：%s\t数学成绩：%s'%(i['姓名'],i['学号'],i['年龄'],i['英语成绩'],i['数学成绩']))
+           print('{:<4}\t{:<4}\t{:<4}\t{:<4}\t{:<4}\t{:<4}'.format(i['姓名'], i['学号'], i['年龄'], i['英语成绩'], i['数学成绩'], int(i['英语成绩'])+int(i['数学成绩'])))
     else:
            print('没有学生信息！')
 def count_student():
     import os
-    if os.path.exists('C:student.txt'):
+    if os.path.exists('student.txt'):
        
        stu_listc=[]
        try:
-           stu_txt=open('C:student.txt','r',encoding='utf-8')
+           stu_txt=open('student.txt','r',encoding='utf-8')
        except:
-           stu_txt=open('C:student.txt','r',encoding='utf-8')
+           stu_txt=open('student.txt','r',encoding='utf-8')
        for i in stu_txt:
            stu_listc.append(eval(i))
        stu_txt.close()
@@ -209,13 +210,13 @@ def count_student():
               print('没有学生信息！')
 def delete_student():
       import os
-      if os.path.exists('C:student.txt'):
+      if os.path.exists('student.txt'):
      
          stu_listd=[]
          try:
-             stu_txt=open('C:student.txt','r',encoding='utf-8')
+             stu_txt=open('student.txt','r',encoding='utf-8')
          except:
-             stu_txt=open('C:student.txt','r',encoding='utf-8')
+             stu_txt=open('student.txt','r',encoding='utf-8')
          for i in stu_txt:
              stu_listd.append(eval(i))
          stu_txt.close()
@@ -224,7 +225,7 @@ def delete_student():
                     for i in stu_listd:
                         if i['姓名']==name:
                             stu_listd.remove(i)
-                            with open('C:student.txt','w',encoding='utf-8') as file1:
+                            with open('student.txt','w',encoding='utf-8') as file1:
                                 for i in stu_listd:
                                     file1.write(str(i)+'\n')
                             print('删除成功')
@@ -238,12 +239,12 @@ def delete_student():
            print('没有找到！')
 def modify_student():
     import os
-    if os.path.exists('C:student.txt'):
+    if os.path.exists('student.txt'):
        stu_listm=[]
        try:
-           stu_txt=open('C:student.txt','r',encoding='utf-8')
+           stu_txt=open('student.txt','r',encoding='utf-8')
        except:
-           stu_txt=open('C:student.txt','r',encoding='utf-8') 
+           stu_txt=open('student.txt','r',encoding='utf-8') 
        for i in stu_txt:
            stu_listm.append(eval(i))
        stu_txt.close()
@@ -272,7 +273,7 @@ def modify_student():
                        answer=input('是否继续修改%s？（y/n）'%i['姓名'])
                        if answer=='n':
                             break
-                   with open('C:student.txt','w',encoding='utf-8') as file1:
+                   with open('student.txt','w',encoding='utf-8') as file1:
                             for i in stu_listm:
                                 file1.write(str(i)+'\n')
                             print('修改成功')
@@ -286,13 +287,13 @@ def modify_student():
             print('没有学生信息！')
 def update_student():
  import os
- if os.path.exists('C:student.txt'):
+ if os.path.exists('student.txt'):
 
     stu_listu=[]
     try:
-        stu_txt=open('C:student.txt','r',encoding='utf-8')
+        stu_txt=open('student.txt','r',encoding='utf-8')
     except:
-        stu_txt=open('C:student.txt','w',encoding='utf-8')
+        stu_txt=open('student.txt','w',encoding='utf-8')
     for i in stu_txt:
         stu_listu.append(eval(i))
     stu_txt.close()
@@ -306,25 +307,25 @@ def update_student():
             break
     else:
         print('没有找到该学生')
-    file3=open('C:student.txt','w',encoding='utf-8')
+    file3=open('student.txt','w',encoding='utf-8')
     for i in stu_listu:
         file3.write(str(i)+'\n')
     file3.close()
     print('修改成功')
 def sort_student():
     import os
-    if os.path.exists('C:student.txt'):
+    if os.path.exists('student.txt'):
    
        stu_lists=[]
        try:
-           stu_txt=open('C:student.txt','r',encoding='utf-8')
+           stu_txt=open('student.txt','r',encoding='utf-8')
        except:
-           stu_txt=open('C:student.txt','w',encoding='utf-8')
+           stu_txt=open('student.txt','w',encoding='utf-8')
        for i in stu_txt:
            stu_lists.append(eval(i))#将文件中的字符串转换成字典
        stu_txt.close()
        try:
-           num1=int(input('请输入排序方式：1.按学号排序；2.按年龄排序；3.按英语成绩排序；4.按数学成绩排序'))
+           num1=int(input('请输入排序方式：1.按学号排序；2.按年龄排序；3.按英语成绩排序；4.按数学成绩排序；5.按总成绩排序'))
        except:
            print('输入错误，请重新输入')
        if num1==1:
@@ -359,10 +360,18 @@ def sort_student():
                     stu_lists.sort(key=lambda x:x['数学成绩'],reverse=True)
                 else:
                     print('输入错误，请重新输入')
+       elif num1==5:
+                a5=input('请输入排序方式：1.升序；2.降序')
+                if a5=='1':
+                     stu_lists.sort(key=lambda x:x['英语成绩']+x['数学成绩'])
+                elif a5=='2':
+                    stu_lists.sort(key=lambda x:x['英语成绩']+x['数学成绩'],reverse=True)
+                else:
+                    print('输入错误，请重新输入')
        else:
            print('输入错误，请重新输入，返主菜单层')
            return
-       file4=open('C:student.txt','w',encoding='utf-8')
+       file4=open('student.txt','w',encoding='utf-8')
        for i in stu_lists:
            file4.write(str(i)+'\n')
        file4.close()
@@ -372,9 +381,9 @@ def sort_student():
            print('没有学生信息！')
 def save(lis):
         try:
-           stu_txt=open('C:student.txt','a',encoding='utf-8')#追加
+           stu_txt=open('student.txt','a',encoding='utf-8')#追加
         except:
-           stu_txt=open('C:student.txt','w',encoding='utf-8')#注意windows下的路径用的/，而不是\  如果是w模式，则会清空原来的内容  如果是a模式，则会追加    如果是r模式，则不能追加  如果是w+模式，则会清空原来的内容  如果是a+模式，则会追加 带+与不带+的区别是：带+的是在原来的内容上追加，不带+的是在原来的内容上添加，添加与追加的区别是：添加是在原来的内容上添加，追加是在原来的内容上追加   
+           stu_txt=open('student.txt','w',encoding='utf-8')#注意windows下的路径用的/，而不是\  如果是w模式，则会清空原来的内容  如果是a模式，则会追加    如果是r模式，则不能追加  如果是w+模式，则会清空原来的内容  如果是a+模式，则会追加 带+与不带+的区别是：带+的是在原来的内容上追加，不带+的是在原来的内容上添加，添加与追加的区别是：添加是在原来的内容上添加，追加是在原来的内容上追加   
         for i in lis:
                stu_txt.write(str(i)+'\n')#+'\n'什么意思？  字典转字符串 
         stu_txt.close()
@@ -384,5 +393,7 @@ def save(lis):
 
 
 main()        
+
+
 
          

@@ -80,7 +80,7 @@ def add_teacher():
 def find_teacher():
        import os
        stu_listf = []
-       if os.path.exists('C:teacher.txt'):
+       if os.path.exists('teacher.txt'):
            flag= 1
            while flag<100:
                 flag+=1
@@ -89,7 +89,7 @@ def find_teacher():
             
                     if a == 1:
                         b = input('请输入教师学号：')
-                        with open('C:teacher.txt', 'r', encoding='utf-8') as stu_txt:
+                        with open('teacher.txt', 'r', encoding='utf-8') as stu_txt:
                             for i in stu_txt:
                                 dict_stu = eval(i)
                                 if b == dict_stu['学号']:
@@ -103,7 +103,7 @@ def find_teacher():
                                 print('没有找到！')
                     elif a == 2:
                         b = input('请输入教师姓名：')
-                        with open('C:teacher.txt', 'r', encoding='utf-8') as stu_txt:
+                        with open('teacher.txt', 'r', encoding='utf-8') as stu_txt:
                             for i in stu_txt:
                                 dict_stu = eval(i)
                                 if b == dict_stu['姓名']:
@@ -118,7 +118,7 @@ def find_teacher():
             
                     elif a == 3:
                         b = int(input('请输入教师年龄：'))
-                        with open('C:teacher.txt', 'r', encoding='utf-8') as stu_txt:
+                        with open('teacher.txt', 'r', encoding='utf-8') as stu_txt:
                             for i in stu_txt:
                                 dict_stu = eval(i)
                                 if b == dict_stu['年龄']:
@@ -134,7 +134,7 @@ def find_teacher():
                     elif a == 4:
                         try:
                             b = int(input('请输入教师英语成绩：'))
-                            with open('C:teacher.txt', 'r', encoding='utf-8') as stu_txt:
+                            with open('teacher.txt', 'r', encoding='utf-8') as stu_txt:
                                 for i in stu_txt:
                                     dict_stu = eval(i)
                                     if b == dict_stu['英语成绩']:
@@ -151,7 +151,7 @@ def find_teacher():
                     elif a == 5:
                         try:
                             b = int(input('请输入教师数学成绩：'))
-                            with open('C:teacher.txt', 'r', encoding='utf-8') as stu_txt:
+                            with open('teacher.txt', 'r', encoding='utf-8') as stu_txt:
                                 for i in stu_txt:
                                     dict_stu = eval(i)
                                     if b == dict_stu['数学成绩']:
@@ -178,13 +178,13 @@ def find_teacher():
            print('还没有教师信息！')
 def show_teacher():
     import os
-    if os.path.exists('C:teacher.txt'):
+    if os.path.exists('teacher.txt'):
        
        stu_lists=[]
        try:
-           stu_txt=open('C:teacher.txt','r',encoding='utf-8')
+           stu_txt=open('teacher.txt','r',encoding='utf-8')
        except:
-           stu_txt=open('C:teacher.txt','r',encoding='utf-8')
+           stu_txt=open('teacher.txt','r',encoding='utf-8')
        for i in stu_txt:
            stu_lists.append(eval(i))
        stu_txt.close()
@@ -195,13 +195,13 @@ def show_teacher():
            print('没有教师信息！')
 def count_teacher():
     import os
-    if os.path.exists('C:teacher.txt'):
+    if os.path.exists('teacher.txt'):
        
        stu_listc=[]
        try:
-           stu_txt=open('C:teacher.txt','r',encoding='utf-8')
+           stu_txt=open('teacher.txt','r',encoding='utf-8')
        except:
-           stu_txt=open('C:teacher.txt','r',encoding='utf-8')
+           stu_txt=open('teacher.txt','r',encoding='utf-8')
        for i in stu_txt:
            stu_listc.append(eval(i))
        stu_txt.close()
@@ -210,13 +210,13 @@ def count_teacher():
               print('没有教师信息！')
 def delete_teacher():
       import os
-      if os.path.exists('C:teacher.txt'):
+      if os.path.exists('teacher.txt'):
      
          stu_listd=[]
          try:
-             stu_txt=open('C:teacher.txt','r',encoding='utf-8')
+             stu_txt=open('teacher.txt','r',encoding='utf-8')
          except:
-             stu_txt=open('C:teacher.txt','r',encoding='utf-8')
+             stu_txt=open('teacher.txt','r',encoding='utf-8')
          for i in stu_txt:
              stu_listd.append(eval(i))
          stu_txt.close()
@@ -225,7 +225,7 @@ def delete_teacher():
                     for i in stu_listd:
                         if i['姓名']==name:
                             stu_listd.remove(i)
-                            with open('C:teacher.txt','w',encoding='utf-8') as file1:
+                            with open('teacher.txt','w',encoding='utf-8') as file1:
                                 for i in stu_listd:
                                     file1.write(str(i)+'\n')
                             print('删除成功')
@@ -239,12 +239,12 @@ def delete_teacher():
            print('没有找到！')
 def modify_teacher():
     import os
-    if os.path.exists('C:teacher.txt'):
+    if os.path.exists('teacher.txt'):
        stu_listm=[]
        try:
-           stu_txt=open('C:teacher.txt','r',encoding='utf-8')
+           stu_txt=open('teacher.txt','r',encoding='utf-8')
        except:
-           stu_txt=open('C:teacher.txt','r',encoding='utf-8') 
+           stu_txt=open('teacher.txt','r',encoding='utf-8') 
        for i in stu_txt:
            stu_listm.append(eval(i))
        stu_txt.close()
@@ -273,7 +273,7 @@ def modify_teacher():
                        answer=input('是否继续修改%s？（y/n）'%i['姓名'])
                        if answer=='n':
                             break
-                   with open('C:teacher.txt','w',encoding='utf-8') as file1:
+                   with open('teacher.txt','w',encoding='utf-8') as file1:
                             for i in stu_listm:
                                 file1.write(str(i)+'\n')
                             print('修改成功')
@@ -287,13 +287,13 @@ def modify_teacher():
             print('没有教师信息！')
 def update_teacher():
  import os
- if os.path.exists('C:teacher.txt'):
+ if os.path.exists('teacher.txt'):
 
     stu_listu=[]
     try:
-        stu_txt=open('C:teacher.txt','r',encoding='utf-8')
+        stu_txt=open('teacher.txt','r',encoding='utf-8')
     except:
-        stu_txt=open('C:teacher.txt','w',encoding='utf-8')
+        stu_txt=open('teacher.txt','w',encoding='utf-8')
     for i in stu_txt:
         stu_listu.append(eval(i))
     stu_txt.close()
@@ -307,20 +307,20 @@ def update_teacher():
             break
     else:
         print('没有找到该教师')
-    file3=open('C:teacher.txt','w',encoding='utf-8')
+    file3=open('teacher.txt','w',encoding='utf-8')
     for i in stu_listu:
         file3.write(str(i)+'\n')
     file3.close()
     print('修改成功')
 def sort_teacher():
     import os
-    if os.path.exists('C:teacher.txt'):
+    if os.path.exists('teacher.txt'):
    
        stu_lists=[]
        try:
-           stu_txt=open('C:teacher.txt','r',encoding='utf-8')
+           stu_txt=open('teacher.txt','r',encoding='utf-8')
        except:
-           stu_txt=open('C:teacher.txt','w',encoding='utf-8')
+           stu_txt=open('teacher.txt','w',encoding='utf-8')
        for i in stu_txt:
            stu_lists.append(eval(i))#将文件中的字符串转换成字典
        stu_txt.close()
@@ -363,7 +363,7 @@ def sort_teacher():
        else:
            print('输入错误，请重新输入，返主菜单层')
            return
-       file4=open('C:teacher.txt','w',encoding='utf-8')
+       file4=open('teacher.txt','w',encoding='utf-8')
        for i in stu_lists:
            file4.write(str(i)+'\n')
        file4.close()
@@ -373,9 +373,9 @@ def sort_teacher():
            print('没有教师信息！')
 def save(lis):
         try:
-           stu_txt=open('C:teacher.txt','a',encoding='utf-8')#追加
+           stu_txt=open('teacher.txt','a',encoding='utf-8')#追加
         except:
-           stu_txt=open('C:teacher.txt','w',encoding='utf-8')#注意windows下的路径用的/，而不是\  如果是w模式，则会清空原来的内容  如果是a模式，则会追加    如果是r模式，则不能追加  如果是w+模式，则会清空原来的内容  如果是a+模式，则会追加 带+与不带+的区别是：带+的是在原来的内容上追加，不带+的是在原来的内容上添加，添加与追加的区别是：添加是在原来的内容上添加，追加是在原来的内容上追加   
+           stu_txt=open('teacher.txt','w',encoding='utf-8')#注意windows下的路径用的/，而不是\  如果是w模式，则会清空原来的内容  如果是a模式，则会追加    如果是r模式，则不能追加  如果是w+模式，则会清空原来的内容  如果是a+模式，则会追加 带+与不带+的区别是：带+的是在原来的内容上追加，不带+的是在原来的内容上添加，添加与追加的区别是：添加是在原来的内容上添加，追加是在原来的内容上追加   
         for i in lis:
                stu_txt.write(str(i)+'\n')#+'\n'什么意思？  字典转字符串 
         stu_txt.close()
