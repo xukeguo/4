@@ -1,63 +1,62 @@
 # 欢迎使用Python脚本编辑器！我的一小步，人类一大步！
-# @File    :   教师信息录入系统2.py
+# @File    :   学生信息录入系统2.py
 # @Time    :   2022/04/23 21:54:16
 # @Author  :   flow-laic
 # @Email   :
-# @Software:   PyCharm
 
 
 
 def main():
-    print('{:^76}'.format('教师信息管理系统'))
+    print('{:^76}'.format('学生信息管理系统'))
     while True:
-        print('{:^76}'.format('1.添加教师信息') )    # !添加教师信息"\t\t\t\t\t\"表示空格
-        print('{:^76}'.format(' 2.查找教师信息'))
-        print('{:^76}'.format(' 3.显示教师信息'))
-        print('{:^76}'.format(' 4.统计教师总人数'))
-        print('{:^76}'.format(' 5.删除教师信息'))
-        print('{:^76}'.format(' 6.修改教师信息'))
+        print('{:^76}'.format('1.添加学生信息') )    # !添加学生信息"\t\t\t\t\t\"表示空格
+        print('{:^76}'.format(' 2.查找学生信息'))
+        print('{:^76}'.format(' 3.显示学生信息'))
+        print('{:^76}'.format(' 4.统计学生总人数'))
+        print('{:^76}'.format(' 5.删除学生信息'))
+        print('{:^76}'.format(' 6.修改学生信息'))
         print('{:^76}'.format('  7.排序      '))
-        print('              \t\t\t  8.退出系统') 
-        print('{:^76}'.format('   请选择（1-8）：'))
+        print('{:^76}'.format('8.修改密码  '))
+        print('{:^76}'.format('9.退出系统  '))
         try:
             choice = int(input())
         except:
             print('请输入数字！')
             continue
         if choice == 1:
-            add_teacher()
+            add_student()
         elif choice == 2:
-            find_teacher()
+            find_student()
         elif choice == 3:
-            show_teacher()
+            show_student()
         elif choice == 4:
-            count_teacher()
+            count_student()
         elif choice == 5:
-            delete_teacher()
+            delete_student()
         elif choice == 6:
-            modify_teacher()
+            modify_student()
         elif choice == 7:
-            sort_teacher()
+            sort_student()
         elif choice == 8:
-            print('感谢使用！')
+            student_change_password()
+        elif choice == 9:
+            print('欢迎下次使用！')
             break
-        else:
-            print('请输入正确的数字！')
-def add_teacher():
+def add_student():
      stu_lista = []
      while True:
             try:
-                name = input('请输入教师姓名：')
+                name = input('请输入学生姓名：')
                 if name == '':
                     print('姓名不能为空，请重新输入')
                     break
-                id = input('请输入教师学号：')
+                id = input('请输入学生学号：')
                 if id == '':
                     print('学号不能为空，请重新输入')
                     break
-                age = int(input('请输入教师年龄：'))
-                engscore = int(input('请输入教师英语成绩：'))
-                mathscore = int(input('请输入教师数学成绩：'))
+                age = int(input('请输入学生年龄：'))
+                engscore = int(input('请输入学生英语成绩：'))
+                mathscore = int(input('请输入学生数学成绩：'))
                 if engscore < 0 or engscore > 100 or mathscore < 0 or mathscore > 100:
                  print('成绩必须在0-100之间')
                  continue
@@ -77,10 +76,10 @@ def add_teacher():
                 break
      save(stu_lista)
      print('录入成功')
-def find_teacher():
+def find_student():
        import os
        stu_listf = []
-       if os.path.exists('teacher.txt'):
+       if os.path.exists('student.txt'):
            flag= 1
            while flag<100:
                 flag+=1
@@ -88,8 +87,8 @@ def find_teacher():
                     a = int(input('请输入1：按学号查找\n2：按姓名查找\n3：按年龄查找\n4：按英语成绩查找\n5：按数学成绩查找\n'))#输入查找方式
             
                     if a == 1:
-                        b = input('请输入教师学号：')
-                        with open('teacher.txt', 'r', encoding='utf-8') as stu_txt:
+                        b = input('请输入学生学号：')
+                        with open('student.txt', 'r', encoding='utf-8') as stu_txt:
                             for i in stu_txt:
                                 dict_stu = eval(i)
                                 if b == dict_stu['学号']:
@@ -102,8 +101,8 @@ def find_teacher():
                             else:
                                 print('没有找到！')
                     elif a == 2:
-                        b = input('请输入教师姓名：')
-                        with open('teacher.txt', 'r', encoding='utf-8') as stu_txt:
+                        b = input('请输入学生姓名：')
+                        with open('student.txt', 'r', encoding='utf-8') as stu_txt:
                             for i in stu_txt:
                                 dict_stu = eval(i)
                                 if b == dict_stu['姓名']:
@@ -117,8 +116,8 @@ def find_teacher():
                                 print('没有找到！')
             
                     elif a == 3:
-                        b = int(input('请输入教师年龄：'))
-                        with open('teacher.txt', 'r', encoding='utf-8') as stu_txt:
+                        b = int(input('请输入学生年龄：'))
+                        with open('student.txt', 'r', encoding='utf-8') as stu_txt:
                             for i in stu_txt:
                                 dict_stu = eval(i)
                                 if b == dict_stu['年龄']:
@@ -133,8 +132,8 @@ def find_teacher():
             
                     elif a == 4:
                         try:
-                            b = int(input('请输入教师英语成绩：'))
-                            with open('teacher.txt', 'r', encoding='utf-8') as stu_txt:
+                            b = int(input('请输入学生英语成绩：'))
+                            with open('student.txt', 'r', encoding='utf-8') as stu_txt:
                                 for i in stu_txt:
                                     dict_stu = eval(i)
                                     if b == dict_stu['英语成绩']:
@@ -150,8 +149,8 @@ def find_teacher():
                             print('输入错误！')
                     elif a == 5:
                         try:
-                            b = int(input('请输入教师数学成绩：'))
-                            with open('teacher.txt', 'r', encoding='utf-8') as stu_txt:
+                            b = int(input('请输入学生数学成绩：'))
+                            with open('student.txt', 'r', encoding='utf-8') as stu_txt:
                                 for i in stu_txt:
                                     dict_stu = eval(i)
                                     if b == dict_stu['数学成绩']:
@@ -175,88 +174,89 @@ def find_teacher():
                 else:
                       continue
        else:
-           print('还没有教师信息！')
-def show_teacher():
+           print('还没有学生信息！')
+def show_student():
     import os
-    if os.path.exists('teacher.txt'):
+    if os.path.exists('student.txt'):
        
        stu_lists=[]
        try:
-           stu_txt=open('teacher.txt','r',encoding='utf-8')
+           stu_txt=open('student.txt','r',encoding='utf-8')
        except:
-           stu_txt=open('teacher.txt','r',encoding='utf-8')
+           stu_txt=open('student.txt','r',encoding='utf-8')
        for i in stu_txt:
            stu_lists.append(eval(i))
        stu_txt.close()
        # print (stu_lists[0]['姓名'])如果要显示最大或最小值，可以先排序再显示第一个索引
+       print('{:<4}\t{:<4}\t{:<4}\t{:<4}\t{:<4}\t{:<4}'.format( '姓名', '学号', '年龄', '英语成绩', '数学成绩', '总分'))
        for i in stu_lists:
-            print('姓名：%s\t学号：%s\t年龄：%s\t英语成绩：%s\t数学成绩：%s'%(i['姓名'],i['学号'],i['年龄'],i['英语成绩'],i['数学成绩']))
+           print('{:<4}\t{:<4}\t{:<4}\t{:<4}\t{:<4}\t{:<4}'.format(i['姓名'], i['学号'], i['年龄'], i['英语成绩'], i['数学成绩'], int(i['英语成绩'])+int(i['数学成绩'])))
     else:
-           print('没有教师信息！')
-def count_teacher():
+           print('没有学生信息！')
+def count_student():
     import os
-    if os.path.exists('teacher.txt'):
+    if os.path.exists('student.txt'):
        
        stu_listc=[]
        try:
-           stu_txt=open('teacher.txt','r',encoding='utf-8')
+           stu_txt=open('student.txt','r',encoding='utf-8')
        except:
-           stu_txt=open('teacher.txt','r',encoding='utf-8')
+           stu_txt=open('student.txt','r',encoding='utf-8')
        for i in stu_txt:
            stu_listc.append(eval(i))
        stu_txt.close()
-       print('教师总人数：%s'%len(stu_listc))
+       print('学生总人数：%s'%len(stu_listc))
     else:
-              print('没有教师信息！')
-def delete_teacher():
+              print('没有学生信息！')
+def delete_student():
       import os
-      if os.path.exists('teacher.txt'):
+      if os.path.exists('student.txt'):
      
          stu_listd=[]
          try:
-             stu_txt=open('teacher.txt','r',encoding='utf-8')
+             stu_txt=open('student.txt','r',encoding='utf-8')
          except:
-             stu_txt=open('teacher.txt','r',encoding='utf-8')
+             stu_txt=open('student.txt','r',encoding='utf-8')
          for i in stu_txt:
              stu_listd.append(eval(i))
          stu_txt.close()
          while True:
-                    name=input('请输入删除教师姓名：')
+                    name=input('请输入删除学生姓名：')
                     for i in stu_listd:
                         if i['姓名']==name:
                             stu_listd.remove(i)
-                            with open('teacher.txt','w',encoding='utf-8') as file1:
+                            with open('student.txt','w',encoding='utf-8') as file1:
                                 for i in stu_listd:
                                     file1.write(str(i)+'\n')
                             print('删除成功')
                             break
                     else:
-                        print('没有找到该教师')
-                    a=input('是否继续删除？（y/n）')#删除多个教师
+                        print('没有找到该学生')
+                    a=input('是否继续删除？（y/n）')#删除多个学生
                     if a!='y':
                         break
       else:
            print('没有找到！')
-def modify_teacher():
+def modify_student():
     import os
-    if os.path.exists('teacher.txt'):
+    if os.path.exists('student.txt'):
        stu_listm=[]
        try:
-           stu_txt=open('teacher.txt','r',encoding='utf-8')
+           stu_txt=open('student.txt','r',encoding='utf-8')
        except:
-           stu_txt=open('teacher.txt','r',encoding='utf-8') 
+           stu_txt=open('student.txt','r',encoding='utf-8') 
        for i in stu_txt:
            stu_listm.append(eval(i))
        stu_txt.close()
        while True:
-           name=input('请输入修改教师姓名：')
+           name=input('请输入修改学生姓名：')
            for i in stu_listm:
                if i['姓名']==name: 
                    print('姓名\t学号\t年龄\t英语成绩\t数学成绩')
                    print('{:<4}\t{:<4}\t{:<4}\t{:<4}\t{:<4}'.format(i['姓名'],i['学号'],i['年龄'],i['英语成绩'],i['数学成绩']))
                    while True:
                        try:
-                           num=int(input('请输入要修改的教师信息：1.学号 2.年龄 3.英语成绩 4.数学成绩'))
+                           num=int(input('请输入要修改的学生信息：1.学号 2.年龄 3.英语成绩 4.数学成绩'))
                            if num==1:
                                i['学号']=input('请输入学号：')
                            elif num==2:
@@ -273,59 +273,59 @@ def modify_teacher():
                        answer=input('是否继续修改%s？（y/n）'%i['姓名'])
                        if answer=='n':
                             break
-                   with open('teacher.txt','w',encoding='utf-8') as file1:
+                   with open('student.txt','w',encoding='utf-8') as file1:
                             for i in stu_listm:
                                 file1.write(str(i)+'\n')
                             print('修改成功')
                             break
            else:
-                print('没有找到该教师')
-           a=input('是否继续修改其他教师？（y/n）')
+                print('没有找到该学生')
+           a=input('是否继续修改其他学生？（y/n）')
            if a!='y':
                     break
     else:
-            print('没有教师信息！')
-def update_teacher():
+            print('没有学生信息！')
+def update_student():
  import os
- if os.path.exists('teacher.txt'):
+ if os.path.exists('student.txt'):
 
     stu_listu=[]
     try:
-        stu_txt=open('teacher.txt','r',encoding='utf-8')
+        stu_txt=open('student.txt','r',encoding='utf-8')
     except:
-        stu_txt=open('teacher.txt','w',encoding='utf-8')
+        stu_txt=open('student.txt','w',encoding='utf-8')
     for i in stu_txt:
         stu_listu.append(eval(i))
     stu_txt.close()
-    name=input('请输入修改教师姓名：')
+    name=input('请输入修改学生姓名：')
     for i in stu_listu:
         if i['姓名']==name:
-            i['学号']=input('请输入教师学号：')
-            i['年龄']=input('请输入教师年龄：')
-            i['英语成绩']=input('请输入教师英语成绩：')
-            i['数学成绩']=input('请输入教师数学成绩：')
+            i['学号']=input('请输入学生学号：')
+            i['年龄']=input('请输入学生年龄：')
+            i['英语成绩']=input('请输入学生英语成绩：')
+            i['数学成绩']=input('请输入学生数学成绩：')
             break
     else:
-        print('没有找到该教师')
-    file3=open('teacher.txt','w',encoding='utf-8')
+        print('没有找到该学生')
+    file3=open('student.txt','w',encoding='utf-8')
     for i in stu_listu:
         file3.write(str(i)+'\n')
     file3.close()
     print('修改成功')
-def sort_teacher():
+def sort_student():
     import os
-    if os.path.exists('teacher.txt'):
+    if os.path.exists('student.txt'):
    
        stu_lists=[]
        try:
-           stu_txt=open('teacher.txt','r',encoding='utf-8')
+           stu_txt=open('student.txt','r',encoding='utf-8')
        except:
-           stu_txt=open('teacher.txt','w',encoding='utf-8')
+           stu_txt=open('student.txt','w',encoding='utf-8')
        for i in stu_txt:
            stu_lists.append(eval(i))#将文件中的字符串转换成字典
        stu_txt.close()
        try:
-           num1=int(input('请输入排序方式：1.按学号排序；2.按年龄排序；3.按英语成绩排序；4.按数学成绩排序'))
+           num1=int(input('请输入排序方式：1.按学号排序；2.按年龄排序；3.按英语成绩排序；4.按数学成绩排序；5.按总成绩排序'))
        except:
            print('输入错误，请重新输入')
        if num1==1:
@@ -360,33 +360,147 @@ def sort_teacher():
                     stu_lists.sort(key=lambda x:x['数学成绩'],reverse=True)
                 else:
                     print('输入错误，请重新输入')
+       elif num1==5:
+                a5=input('请输入排序方式：1.升序；2.降序')
+                if a5=='1':
+                     stu_lists.sort(key=lambda x:x['英语成绩']+x['数学成绩'])
+                elif a5=='2':
+                    stu_lists.sort(key=lambda x:x['英语成绩']+x['数学成绩'],reverse=True)
+                else:
+                    print('输入错误，请重新输入')
        else:
            print('输入错误，请重新输入，返主菜单层')
            return
-       file4=open('teacher.txt','w',encoding='utf-8')
+       file4=open('student.txt','w',encoding='utf-8')
        for i in stu_lists:
            file4.write(str(i)+'\n')
        file4.close()
-       print('排序成功,请在显示教师信息查看')  
+       print('排序成功,请在显示学生信息查看')  
 
     else:
-           print('没有教师信息！')
+           print('没有学生信息！')
 def save(lis):
         try:
-           stu_txt=open('teacher.txt','a',encoding='utf-8')#追加
+           stu_txt=open('student.txt','a',encoding='utf-8')#追加
         except:
-           stu_txt=open('teacher.txt','w',encoding='utf-8')#注意windows下的路径用的/，而不是\  如果是w模式，则会清空原来的内容  如果是a模式，则会追加    如果是r模式，则不能追加  如果是w+模式，则会清空原来的内容  如果是a+模式，则会追加 带+与不带+的区别是：带+的是在原来的内容上追加，不带+的是在原来的内容上添加，添加与追加的区别是：添加是在原来的内容上添加，追加是在原来的内容上追加   
+           stu_txt=open('student.txt','w',encoding='utf-8')#注意windows下的路径用的/，而不是\  如果是w模式，则会清空原来的内容  如果是a模式，则会追加    如果是r模式，则不能追加  如果是w+模式，则会清空原来的内容  如果是a+模式，则会追加 带+与不带+的区别是：带+的是在原来的内容上追加，不带+的是在原来的内容上添加，添加与追加的区别是：添加是在原来的内容上添加，追加是在原来的内容上追加   
         for i in lis:
                stu_txt.write(str(i)+'\n')#+'\n'什么意思？  字典转字符串 
         stu_txt.close()
         
+def  student_change_password():
+    while True:
+        new = input('请输入新密码：')
+        if new == '':
+            print('密码不能为空，请重新输入')
+            break
+        if new=='123456':
+            print('密码不能为123456，请重新输入')
+            break
+        if new.isalnum()==False:
+            print('密码必须为数字或字母，请重新输入')
+            break
+        if len(new)<6:
+            print('密码长度不能小于6位，请重新输入')
+            break
+        if len(new)>12:
+            print('密码长度不能大于12位，请重新输入')
+            break
+        if new.isdigit()==True:
+            print('密码不能为纯数字，请重新输入')
+            break
+        if new.isalpha()==True:
+            print('密码不能为纯字母，请重新输入')
+            break
+       # if new.islower()==True:
+        #    print('密码不能为纯小写字母，请重新输入')
+         #   break
+        if new.isupper()==True:
+            print('密码不能为纯大写字母，请重新输入')
+            break
+        if new.count('a')>=2:
+            print('密码不能为a或aa，请重新输入')
+            break
+        else:
+            new2 = input('请再次输入新密码：')
+            if new2 == '':
+                print('密码不能为空，请重新输入')
+                break
+            if new2 == new:
+               with open('student_info.txt', 'w') as f:
+                  f.write(str(new))
+                  print('密码修改成功！')
+                  break
+
+def student_in():
+    with open('student_info.txt', 'a') as f:
+     with open('student_info.txt', 'r') as f1:
+        a = f1.readlines()
+        if len(a) == 0:
+              password = 123456#有初始密码
+              a1=0
+              while a1 <6:
+                  a1+=1
+                  b1 = int(input('请输入密码：'))
+                  if b1==password:
+                      f.write(str(password))
+                      print('登录成功！')
+                      main()
+                      break
+        flags1 = 0
+        while   flags1<3:
+                 flags1 += 1
+                 try:
+                     with open('student_info.txt', 'r') as f:
+                         password = f.read()
+                     password1 = input('请输入密码：')
+                     if password1 == '':
+                         print('密码不能为空，请重新输入')
+                         #break
+                     #if password == '123456':
+                        # print('密码不能为123456，请重新输入')
+                        # break
+                     if password1.isalnum() == False:
+                         print('密码必须为数字或字母，请重新输入')
+                         #break
+                     if len(password1) < 6:
+                         print('密码长度不能小于6位，请重新输入')
+                         #break
+                     if len(password1) > 12:
+                         print('密码长度不能大于12位，请重新输入')
+                         #break
+                     #if password.isdigit() == True:
+                         #print('密码不能为纯数字，请重新输入')
+                         #break
+                     if password1.isalpha() == True:
+                         print('密码不能为纯字母，请重新输入')
+                         #break
+                     #if password.islower() == True:
+                       #  print('密码不能为纯小写字母，请重新输入')
+                       #  break
+                     if password1.isupper() == True:
+                         print('密码不能为纯大写字母，请重新输入')
+                         #break
+                     if password1.count('a') >= 2:
+                         print('密码不能为a或aa，请重新输入')
+                         #break
+                     else:
+                         if password1 == password:
+                             print('登录成功！')
+                             main()
+                             break
+                         else:
+                             print('密码错误，请重新输入')
+                            # break
+                 except:
+                     print('密码错误，请重新输入')
+                    # break
+        
+student_in()
 
 
 
 
-main()        
 
-    
-      
 
          
