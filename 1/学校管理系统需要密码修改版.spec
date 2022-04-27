@@ -2,11 +2,14 @@
 
 
 block_cipher = None
+file = [
+        '学校管理系统需要密码修改版.py',
+        '教师信息录入系统teacher.py',
+        '学生信息录入系统student..py'
+        ]
 
-
-a = Analysis(
-    ['学校管理系统需要密码修改版.py'],
-    pathex=[],
+a = Analysis(,
+    pathex=['/Users/xkg/Library/CloudStorage/OneDrive-个人/python/4/学校管理 系统student\&teacher'],
     binaries=[],
     datas=[],
     hiddenimports=[],
